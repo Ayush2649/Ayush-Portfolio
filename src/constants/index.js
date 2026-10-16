@@ -1,289 +1,138 @@
-const navLinks = [
-    {
-        name: "Work",
-        link: "#work",
-    },
-    {
-        name: "Experience",
-        link: "#experience",
-    },
-    {
-        name: "Skills",
-        link: "#skills",
-    },
-    {
-        name: "Resume",
-        link: "#resume",
-    },
-];
-
-const words = [
-    { text: "Ideas", imgPath: "/images/ideas.svg" },
-    { text: "Concepts", imgPath: "/images/concepts.svg" },
-    { text: "Designs", imgPath: "/images/designs.svg" },
-    { text: "Code", imgPath: "/images/code.svg" },
-    { text: "Ideas", imgPath: "/images/ideas.svg" },
-    { text: "Concepts", imgPath: "/images/concepts.svg" },
-    { text: "Designs", imgPath: "/images/designs.svg" },
-    { text: "Code", imgPath: "/images/code.svg" },
-];
-
-const counterItems = [
-    { value: 3, suffix: "+", label: "Years of Experience" },
-    { value: 10, suffix: "+", label: "Satisfied Clients" },
-    { value: 20, suffix: "+", label: "Completed Projects" },
-    { value: 90, suffix: "%", label: "Optimization Rate" },
-];
-
-const logoIconsList = [
-    {
-        imgPath: "/images/logos/company-logo-1.png",
-    },
-    {
-        imgPath: "/images/logos/company-logo-2.png",
-    },
-    {
-        imgPath: "/images/logos/company-logo-3.png",
-    },
-    {
-        imgPath: "/images/logos/company-logo-4.png",
-    },
-    {
-        imgPath: "/images/logos/company-logo-5.png",
-    },
-    {
-        imgPath: "/images/logos/company-logo-6.png",
-    },
-    {
-        imgPath: "/images/logos/company-logo-7.png",
-    },
-    {
-        imgPath: "/images/logos/company-logo-8.png",
-    },
-    {
-        imgPath: "/images/logos/company-logo-9.png",
-    },
-    {
-        imgPath: "/images/logos/company-logo-10.png",
-    },
-    {
-        imgPath: "/images/logos/company-logo-11.png",
-    },
-];
-
-const abilities = [
-    {
-        imgPath: "/images/seo.png",
-        title: "Quality Focus",
-        desc: "Delivering high-quality results while maintaining attention to every detail.",
-    },
-    {
-        imgPath: "/images/chat.png",
-        title: "Reliable Communication",
-        desc: "Keeping you updated at every step to ensure transparency and clarity.",
-    },
-    {
-        imgPath: "/images/time.png",
-        title: "On-Time Delivery",
-        desc: "Making sure projects are completed on schedule, with quality & attention to detail.",
-    },
-];
-
-const techStackImgs = [
-    {
-        name: "React Developer",
-        imgPath: "/images/logos/react.png",
-    },
-    {
-        name: "Python Developer",
-        imgPath: "/images/logos/python.svg",
-    },
-    {
-        name: "Backend Developer",
-        imgPath: "/images/logos/node.png",
-    },
-    {
-        name: "Interactive Developer",
-        imgPath: "/images/logos/three.png",
-    },
-    {
-        name: "Project Manager",
-        imgPath: "/images/logos/git.svg",
-    },
-    {
-        name: "Full Stack Developer",
-
-    }
-];
-
-const techStackIcons = [
-    {
-        name: "React Developer",
-        modelPath: "/models/react_logo-transformed.glb",
-        scale: 1,
-        rotation: [0, 0, 0],
-    },
-    {
-        name: "Python Developer",
-        modelPath: "/models/python-transformed.glb",
-        scale: 0.8,
-        rotation: [0, 0, 0],
-    },
-    {
-        name: "Backend Developer",
-        modelPath: "/models/node-transformed.glb",
-        scale: 5,
-        rotation: [0, -Math.PI / 2, 0],
-    },
-    {
-        name: "Interactive Developer",
-        modelPath: "/models/three.js-transformed.glb",
-        scale: 0.05,
-        rotation: [0, 0, 0],
-    },
-    {
-        name: "Project Manager",
-        modelPath: "/models/git-svg-transformed.glb",
-        scale: 0.05,
-        rotation: [0, -Math.PI / 4, 0],
-    },
-];
-
-const expCards = [
-    {
-        review:
-            "Adrian brought creativity and technical expertise to the team, significantly improving our frontend performance. His work has been invaluable in delivering faster experiences.",
-        imgPath: "/images/exp1.png",
-        logoPath: "/images/logo1.png",
-        title: "Frontend Developer",
-        date: "January 2023 - Present",
-        responsibilities: [
-            "Developed and maintained user-facing features for the Hostinger website.",
-            "Collaborated closely with UI/UX designers to ensure seamless user experiences.",
-            "Optimized web applications for maximum speed and scalability.",
-        ],
-    },
-    {
-        review:
-            "Adrian’s contributions to Docker's web applications have been outstanding. He approaches challenges with a problem-solving mindset.",
-        imgPath: "/images/exp2.png",
-        logoPath: "/images/logo2.png",
-        title: "Full Stack Developer",
-        date: "June 2020 - December 2023",
-        responsibilities: [
-            "Led the development of Docker's web applications, focusing on scalability.",
-            "Worked with backend engineers to integrate APIs seamlessly with the frontend.",
-            "Contributed to open-source projects that were used with the Docker ecosystem.",
-        ],
-    },
-    {
-        review:
-            "Adrian’s work on Appwrite’s mobile app brought a high level of quality and efficiency. He delivered solutions that enhanced our mobile experience & meet our product goals.",
-        imgPath: "/images/exp3.png",
-        logoPath: "/images/logo3.png",
-        title: "React Native Developer",
-        date: "March 2019 - May 2020",
-        responsibilities: [
-            "Built cross-platform mobile apps using React Native, integrating with Appwrite's backend services.",
-            "Improved app performance and user experience through code optimization and testing.",
-            "Coordinated with the product team to implement features based on feedback.",
-        ],
-    },
-];
-
-const expLogos = [
-    {
-        name: "logo1",
-        imgPath: "/images/logo1.png",
-    },
-    {
-        name: "logo2",
-        imgPath: "/images/logo2.png",
-    },
-    {
-        name: "logo3",
-        imgPath: "/images/logo3.png",
-    },
-];
-
-const testimonials = [
-    {
-        name: "Esther Howard",
-        mentions: "@estherhoward",
-        review:
-            "I can’t say enough good things about Adrian. He was able to take our complex project requirements and turn them into a seamless, functional website. His problem-solving abilities are outstanding.",
-        imgPath: "/images/client1.png",
-    },
-    {
-        name: "Wade Warren",
-        mentions: "@wadewarren",
-        review:
-            "Working with Adrian was a fantastic experience. He transformed our outdated website into a modern, user-friendly platform. His attention to detail and commitment to quality are unmatched. Highly recommend him for any web dev projects.",
-        imgPath: "/images/client3.png",
-    },
-    {
-        name: "Guy Hawkins",
-        mentions: "@guyhawkins",
-        review:
-            "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-        imgPath: "/images/client2.png",
-    },
-    {
-        name: "Marvin McKinney",
-        mentions: "@marvinmckinney",
-        review:
-            "Adrian was a pleasure to work with. He turned our outdated website into a fresh, intuitive platform that’s both modern and easy to navigate. Fantastic work overall.",
-        imgPath: "/images/client5.png",
-    },
-    {
-        name: "Floyd Miles",
-        mentions: "@floydmiles",
-        review:
-            "Adrian’s expertise in web development is truly impressive. He delivered a robust and scalable solution for our e-commerce site, and our online sales have significantly increased since the launch. He’s a true professional!",
-        imgPath: "/images/client4.png",
-    },
-    {
-        name: "Albert Flores",
-        mentions: "@albertflores",
-        review:
-            "Adrian was a pleasure to work with. He understood our requirements perfectly and delivered a website that exceeded our expectations. His skills in both frontend and backend dev are top-notch.",
-        imgPath: "/images/client6.png",
-    },
-];
-
-const socialImgs = [
-    {
-        name: "insta",
-        url: "https://www.instagram.com/",
-        imgPath: "/images/insta.png",
-    },
-    {
-        name: "fb",
-        url: "https://www.facebook.com/",
-        imgPath: "/images/fb.png",
-    },
-    {
-        name: "x",
-        url: "https://www.x.com/",
-        imgPath: "/images/x.png",
-    },
-    {
-        name: "linkedin",
-        url: "https://www.linkedin.com/",
-        imgPath: "/images/linkedin.png",
-    },
-];
-
-export {
-    words,
-    abilities,
-    logoIconsList,
-    counterItems,
-    expCards,
-    expLogos,
-    testimonials,
-    socialImgs,
-    techStackIcons,
-    techStackImgs,
-    navLinks,
+export const personalInfo = {
+    name: "Ayush Sahu",
+    role: "Software Engineer & AI Engineer",
+    subRole: "Full-Stack Architectures · Deep Learning Systems",
+    location: "Mumbai, India",
+    coordinates: "19.0760° N, 72.8777° E",
+    email: "ayushsahu1430@gmail.com",
+    availability: "Available for Software & AI Engineering Roles",
+    manifesto: [
+        {
+            id: "01",
+            heading: "Full-Stack Engineering",
+            text: "Architecting scalable MERN platforms, real-time microservices, and high-throughput systems engineered for reliability and sub-second latency.",
+        },
+        {
+            id: "02",
+            heading: "Applied AI & Deep Learning",
+            text: "Developing clinical 1D CNN-LSTM diagnostic models with Grad-CAM explainability, alongside context-aware LangChain and FAISS retrieval pipelines.",
+        },
+    ],
 };
+
+export const navLinks = [
+    { name: "About", link: "#about" },
+    { name: "Work", link: "#work" },
+    { name: "Experience", link: "#experience" },
+    { name: "Skills", link: "#skills" },
+    { name: "Contact", link: "#contact" },
+];
+
+export const heroTags = [
+    {
+        id: "tag-1",
+        label: "Systems & Architecture",
+        detail: "MERN · Node.js · Microservices",
+        side: "left",
+    },
+    {
+        id: "tag-2",
+        label: "Real-Time Telemetry",
+        detail: "WebSockets · High-Throughput APIs",
+        side: "left",
+    },
+    {
+        id: "tag-3",
+        label: "Applied Deep Learning",
+        detail: "1D CNN-LSTM · Explainable Grad-CAM",
+        side: "right",
+    },
+    {
+        id: "tag-4",
+        label: "Semantic AI Pipelines",
+        detail: "LangChain · FAISS · Vector Search",
+        side: "right",
+    },
+];
+
+export const socialLinks = [
+    {
+        name: "GitHub",
+        url: "https://github.com/Ayush2649",
+        handle: "Ayush2649",
+    },
+    {
+        name: "LinkedIn",
+        url: "https://www.linkedin.com/in/ayush-sahu1430/",
+        handle: "ayush-sahu1430",
+    },
+    {
+        name: "LeetCode",
+        url: "https://leetcode.com/u/ayush___4911/",
+        handle: "ayush___4911",
+    },
+    {
+        name: "Email",
+        url: "mailto:ayushsahu1430@gmail.com",
+        handle: "ayushsahu1430@gmail.com",
+    },
+];
+
+// Verified authentic projects
+export const authenticProjects = [
+    {
+        id: "statup",
+        title: "StatUp — AI Startup Insights Platform",
+        category: "Full Stack & Machine Learning",
+        tagline: "Real-time analytics and predictive intelligence for startup ecosystems.",
+        summary: "An intelligent platform analyzing market metrics, funding trends, and ecosystem health with semantic classification.",
+        tags: ["React", "Node.js", "AI Analytics", "Tailwind CSS"],
+        imgPath: "/images/statup.png",
+        githubUrl: "https://github.com/Ayush2649",
+        featured: true,
+    },
+    {
+        id: "arrhythmia",
+        title: "Automated Arrhythmia Detection with Explainable 1D CNN",
+        category: "Deep Learning & Healthcare AI",
+        tagline: "Clinical-grade ECG interpretation using hybrid 1D CNN–LSTM with Grad-CAM.",
+        summary: "Developed an explainable deep learning pipeline for automated cardiac arrhythmia classification from raw ECG signals with heatmaps for clinical validation.",
+        tags: ["Python", "PyTorch", "1D CNN-LSTM", "Grad-CAM", "Jupyter"],
+        imgPath: "/images/arrthmiya.png",
+        githubUrl: "https://github.com/Ayush2649/Improving-Clinical-Usability-of-Automated-Arrhythmia-Detection-with-an-Explainable-1D-CNN",
+        featured: true,
+    },
+    {
+        id: "ryde",
+        title: "Ryde — On-Demand Ride Platform",
+        category: "Full Stack MERN & Distributed Systems",
+        tagline: "Uber-scale ride hailing with live telemetry and Google Maps integration.",
+        summary: "Engineered a full-featured mobility platform with real-time driver tracking, WebSocket-based ride matching, JWT security, and responsive UI.",
+        tags: ["React", "Express.js", "MongoDB", "WebSockets", "Google Maps API"],
+        imgPath: "/images/project1.png",
+        githubUrl: "https://github.com/Ayush2649/Ryde",
+        featured: true,
+    },
+    {
+        id: "netflix-gpt",
+        title: "Netflix-GPT — AI Content Recommendation Engine",
+        category: "Frontend & Applied AI",
+        tagline: "Cinematic streaming UI augmented with natural language movie search.",
+        summary: "Combined TMDB API with OpenAI GPT completion for conversational movie discovery, multilingual support, and responsive media trays.",
+        tags: ["React", "Redux Toolkit", "OpenAI API", "Tailwind CSS"],
+        imgPath: "/images/project2.png",
+        githubUrl: "https://github.com/Ayush2649/Netflix-GPT",
+        featured: false,
+    },
+    {
+        id: "smart-faq",
+        title: "Smart FAQ System using LangChain & FAISS",
+        category: "Generative AI & Semantic Retrieval",
+        tagline: "Interactive retrieval-augmented generation engine with HuggingFace embeddings.",
+        summary: "Constructed an intelligent FAQ querying system utilizing LangChain, vector store FAISS, and custom knowledge base ingestion for contextual question answering.",
+        tags: ["LangChain", "FAISS", "HuggingFace", "Python", "RL Knowledge Base"],
+        imgPath: "/images/project3.png",
+        githubUrl: "https://github.com/Ayush2649/-Smart-FAQ-System-using-LangChain-with-Reinforcement-Learning-Knowledge-Base-",
+        featured: false,
+    },
+];

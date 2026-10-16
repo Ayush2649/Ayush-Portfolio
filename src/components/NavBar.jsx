@@ -1,48 +1,142 @@
-import React, {useEffect, useState} from 'react';
-import { navLinks } from "../constants/index.js";
+import React, { useEffect, useState } from "react";
+import { navLinks, personalInfo } from "../constants/index.js";
 
 const NavBar = () => {
     const [scrolled, setScrolled] = useState(false);
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
-            const isScrolled = window.scrollY > 10;
-            setScrolled(true);
-        }
+            setScrolled(window.scrollY > 20);
+        };
 
-        window.addEventListener('scroll', handleScroll);
-
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, [])
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
     return (
-        <header className={`navbar ${scrolled ? 'scrolled' : 'not-scrolled'}`}>
-            <div className="inner">
-                <a className="logo" href="#hero">
-                    Ayush | Dev
+        <header
+            className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+                scrolled
+                    ? "bg-[#FAF7F3]/95 backdrop-blur-md border-b border-[#141413]/10 py-3.5 shadow-xs"
+                    : "bg-transparent py-5 md:py-6"
+            }`}
+        >
+            <div className="page-container flex items-center justify-between">
+                {/* Brand / Logo */}
+                <a
+                    href="#top"
+                    className="group flex items-center gap-3.5 text-left transition-transform duration-200 shrink-0"
+                >
+                    <div className="w-9 h-9 rounded-full bg-[#141413] text-[#FAF7F3] flex items-center justify-center font-editorial-sans text-xs font-bold tracking-wider">
+                        AS
+                    </div>
+                    <div>
+                        <div className="font-editorial-sans font-bold text-base md:text-lg tracking-tight text-[#141413] group-hover:text-[#5C5955] transition-colors leading-tight">
+                            {personalInfo.name}
+                        </div>
+                        <div className="font-editorial-sans text-xs text-[#6B6661] leading-tight">
+                            Software &amp; AI Engineer
+                        </div>
+                    </div>
                 </a>
 
-                <nav className="desktop">
-                    <ul>
-                        {navLinks.map(({link, name}) => (
-                            <li key={name} className="group">
-                                <a href={link}>
-                                    <span>{name}</span>
-                                    <span className="underline"/>
+                {/* Desktop Navigation Links */}
+                <nav className="hidden md:flex items-center gap-8 lg:gap-11">
+                    <ul className="flex items-center gap-7 lg:gap-9">
+                        {navLinks.map(({ name, link }) => (
+                            <li key={name}>
+                                <a
+                                    href={link}
+                                    className="font-editorial-sans text-[15px] font-medium text-[#4A4744] hover:text-[#141413] transition-colors relative py-1"
+                                >
+                                    {name}
                                 </a>
                             </li>
                         ))}
                     </ul>
+
+                    {/* Status Pill */}
+                    <div className="hidden xl:inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F2EEE7] border border-[#141413]/10 text-xs font-editorial-sans font-medium text-[#5C5955] whitespace-nowrap">
+                        <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse" />
+                        <span>Available for roles</span>
+                    </div>
+
+                    {/* Direct Contact Button */}
+                    <a
+                        href="#contact"
+                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#141413] text-[#FAF7F3] text-sm font-editorial-sans font-medium hover:bg-[#333331] transition-all duration-200 shadow-xs hover:shadow-md shrink-0 whitespace-nowrap"
+                    >
+                        <span>Let's Connect</span>
+                        <span className="text-xs">↗</span>
+                    </a>
                 </nav>
 
-                <a href="#contact" className="contact-btn group">
-                    <div className="inner">
-                        <span>Contact me</span>
-                    </div>
-                </a>
+                {/* Mobile Menu Toggle Button */}
+                <button
+                    type="button"
+                    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                    aria-label="Toggle navigation menu"
+                    className="md:hidden p-2.5 rounded-xl border border-[#141413]/10 text-[#141413] hover:bg-[#F2EEE7] transition-colors shrink-0"
+                >
+                    <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                    >
+                        {mobileMenuOpen ? (
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M6 18L18 6M6 6l12 12"
+                            />
+                        ) : (
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M4 6h16M4 12h16m-7 6h7"
+                            />
+                        )}
+                    </svg>
+                </button>
             </div>
+
+            {/* Mobile Dropdown Menu */}
+            {mobileMenuOpen && (
+                <div className="md:hidden bg-[#FAF7F3] border-b border-[#141413]/10 px-6 py-6 shadow-xl animate-in fade-in slide-in-from-top-2 duration-200">
+                    <ul className="flex flex-col gap-3 mb-6">
+                        {navLinks.map(({ name, link }) => (
+                            <li key={name}>
+                                <a
+                                    href={link}
+                                    onClick={() => setMobileMenuOpen(false)}
+                                    className="block font-editorial-sans text-lg font-medium text-[#141413] hover:text-[#5C5955] py-2"
+                                >
+                                    {name}
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
+                    <div className="pt-4 border-t border-[#141413]/10 flex flex-col gap-3.5">
+                        <div className="inline-flex items-center gap-2 text-xs font-editorial-sans text-[#5C5955]">
+                            <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse" />
+                            <span>Available in Mumbai · Open to Remote</span>
+                        </div>
+                        <a
+                            href="#contact"
+                            onClick={() => setMobileMenuOpen(false)}
+                            className="w-full py-3 rounded-full bg-[#141413] text-[#FAF7F3] text-center text-sm font-editorial-sans font-medium tracking-wide shadow-xs"
+                        >
+                            Let's Connect ↗
+                        </a>
+                    </div>
+                </div>
+            )}
         </header>
-    )
-}
+    );
+};
 
 export default NavBar;
