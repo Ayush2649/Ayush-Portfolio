@@ -78,61 +78,139 @@ export const socialLinks = [
     },
 ];
 
-// Verified authentic projects
-export const authenticProjects = [
-    {
-        id: "statup",
-        title: "StatUp — AI Startup Insights Platform",
-        category: "Full Stack & Machine Learning",
-        tagline: "Real-time analytics and predictive intelligence for startup ecosystems.",
-        summary: "An intelligent platform analyzing market metrics, funding trends, and ecosystem health with semantic classification.",
-        tags: ["React", "Node.js", "AI Analytics", "Tailwind CSS"],
-        imgPath: "/images/statup.png",
-        githubUrl: "https://github.com/Ayush2649",
-        featured: true,
-    },
-    {
-        id: "arrhythmia",
-        title: "Automated Arrhythmia Detection with Explainable 1D CNN",
-        category: "Deep Learning & Healthcare AI",
-        tagline: "Clinical-grade ECG interpretation using hybrid 1D CNN–LSTM with Grad-CAM.",
-        summary: "Developed an explainable deep learning pipeline for automated cardiac arrhythmia classification from raw ECG signals with heatmaps for clinical validation.",
-        tags: ["Python", "PyTorch", "1D CNN-LSTM", "Grad-CAM", "Jupyter"],
-        imgPath: "/images/arrthmiya.png",
-        githubUrl: "https://github.com/Ayush2649/Improving-Clinical-Usability-of-Automated-Arrhythmia-Detection-with-an-Explainable-1D-CNN",
-        featured: true,
-    },
-    {
-        id: "ryde",
-        title: "Ryde — On-Demand Ride Platform",
-        category: "Full Stack MERN & Distributed Systems",
-        tagline: "Uber-scale ride hailing with live telemetry and Google Maps integration.",
-        summary: "Engineered a full-featured mobility platform with real-time driver tracking, WebSocket-based ride matching, JWT security, and responsive UI.",
-        tags: ["React", "Express.js", "MongoDB", "WebSockets", "Google Maps API"],
-        imgPath: "/images/project1.png",
-        githubUrl: "https://github.com/Ayush2649/Ryde",
-        featured: true,
-    },
-    {
-        id: "netflix-gpt",
-        title: "Netflix-GPT — AI Content Recommendation Engine",
-        category: "Frontend & Applied AI",
-        tagline: "Cinematic streaming UI augmented with natural language movie search.",
-        summary: "Combined TMDB API with OpenAI GPT completion for conversational movie discovery, multilingual support, and responsive media trays.",
-        tags: ["React", "Redux Toolkit", "OpenAI API", "Tailwind CSS"],
-        imgPath: "/images/project2.png",
-        githubUrl: "https://github.com/Ayush2649/Netflix-GPT",
-        featured: false,
-    },
-    {
-        id: "smart-faq",
-        title: "Smart FAQ System using LangChain & FAISS",
-        category: "Generative AI & Semantic Retrieval",
-        tagline: "Interactive retrieval-augmented generation engine with HuggingFace embeddings.",
-        summary: "Constructed an intelligent FAQ querying system utilizing LangChain, vector store FAISS, and custom knowledge base ingestion for contextual question answering.",
-        tags: ["LangChain", "FAISS", "HuggingFace", "Python", "RL Knowledge Base"],
-        imgPath: "/images/project3.png",
-        githubUrl: "https://github.com/Ayush2649/-Smart-FAQ-System-using-LangChain-with-Reinforcement-Learning-Knowledge-Base-",
-        featured: false,
-    },
-];
+// Verified authentic project records organized for editorial showcase
+export const projectsData = {
+    flagship: [
+        {
+            id: "satat",
+            number: "01",
+            title: "SATAT",
+            subtitle: "Personal Wellness & Productivity Operating System",
+            category: "Full-Stack System · Multi-Model AI",
+            role: "Founder & Lead Engineer",
+            status: "Live in Production",
+            description: "A personal operating system connecting productivity, fitness, nutrition, and context-aware AI.",
+            bullets: [
+                "Built a Next.js and TypeScript application connecting tasks, workout tracking, nutrition, and AI assistance.",
+                "Developed a two-stage meal-analysis pipeline using Gemini vision, a deterministic food database, and DeepSeek estimation.",
+                "Built Orbit, an AI companion that uses task, workout, and nutrition context to provide relevant assistance.",
+                "Implemented a NextAuth-to-Firebase custom-token bridge and granular Firestore security rules."
+            ],
+            stack: [
+                "Next.js 14",
+                "TypeScript",
+                "Tailwind CSS",
+                "Firebase / Firestore",
+                "Gemini 2.0",
+                "Groq SDK",
+                "DeepSeek",
+                "Radix UI",
+                "Web Push",
+                "Vitest"
+            ],
+            links: {
+                live: "https://daily-os-opal-kappa.vercel.app/",
+                github: "https://github.com/Ayush2649/SATAT"
+            },
+            badge: "Founder & Lead Engineer",
+            accentColor: "#3A6351"
+        },
+        {
+            id: "solution-library",
+            number: "02",
+            title: "Solution Library",
+            subtitle: "Enterprise Reusable Solution & Knowledge Platform",
+            category: "Enterprise System · Knowledge Architecture",
+            company: "Contentstack",
+            role: "Software Engineering Intern",
+            status: "Internal Production",
+            description: "A centralized internal engineering platform engineered to streamline the creation, taxonomy, discovery, and automated reuse of production-grade architectural solutions across teams.",
+            bullets: [
+                "Eliminated repetitive boilerplate development by establishing a discoverable, version-controlled library of verified engineering solutions.",
+                "Designed structured solution schemas enabling cross-stack discovery and rapid technical onboarding across developer pods.",
+                "Delivered a verified 30%+ engineering productivity improvement across participating development groups.",
+                "Integrated automated taxonomy and intelligent retrieval to surface relevant architectural blueprints during sprint scoping."
+            ],
+            stack: [
+                "React",
+                "AWS Lambda",
+                "Contentstack APIs",
+                "REST Architecture",
+                "Microservices",
+                "Design Systems"
+            ],
+            metric: "30%+ Productivity Gain",
+            badge: "Contentstack · Enterprise",
+            isInternal: true,
+            accentColor: "#141413"
+        },
+        {
+            id: "arrhythmia",
+            number: "03",
+            title: "Explainable Arrhythmia Detection",
+            subtitle: "Clinical-Grade 1D CNN–LSTM with Grad-CAM Visual Explainability",
+            category: "Deep Learning Research · Healthcare AI",
+            role: "Lead Researcher & Engineer",
+            status: "Open Source Research",
+            description: "An interpretable deep learning diagnostic system designed to automate cardiac arrhythmia detection from raw time-series ECG telemetry with transparent clinical heatmaps.",
+            bullets: [
+                "Engineered a hybrid 1D CNN–LSTM architecture capturing both localized morphological anomalies and temporal cardiac sequence dependencies.",
+                "Trained and evaluated on the benchmark MIT-BIH Arrhythmia Database across standardized AAMI cardiac beat categories.",
+                "Integrated 1D Grad-CAM (Gradient-weighted Class Activation Mapping) to highlight exact P-Q-R-S-T wave segments driving predictions.",
+                "Evaluated comprehensively across precision, recall, F1-score, and accuracy, documenting morphological edge-case boundaries."
+            ],
+            stack: [
+                "Python",
+                "PyTorch",
+                "1D CNN-LSTM",
+                "Grad-CAM",
+                "MIT-BIH Database",
+                "NumPy",
+                "Matplotlib"
+            ],
+            links: {
+                github: "https://github.com/Ayush2649/Improving-Clinical-Usability-of-Automated-Arrhythmia-Detection-with-an-Explainable-1D-CNN"
+            },
+            badge: "Deep Learning Research",
+            image: "/images/arrthmiya.png",
+            accentColor: "#D95338"
+        }
+    ],
+    additional: [
+        {
+            id: "cs-to-cs",
+            number: "04",
+            title: "CS-to-CS Migration Tool",
+            company: "Contentstack",
+            category: "Infrastructure & Data Tooling",
+            description: "High-throughput data migration pipeline facilitating reliable, automated content transfer across isolated stacks and geographic cloud regions.",
+            bullets: [
+                "Automated migration of content assets and complex nested content models between disparate Contentstack cloud regions.",
+                "Engineered robust schema mapping and validation logic ensuring 100% transfer integrity across multi-tiered taxonomies.",
+                "Successfully executed migrations across 20+ enterprise stacks encompassing 20,000+ production content entries with zero data corruption."
+            ],
+            stack: ["Node.js", "Contentstack Management API", "REST APIs", "Async Queues", "JSON Schema Validation"],
+            metric: "20+ Stacks · 20,000+ Entries",
+            isInternal: true
+        },
+        {
+            id: "sap-smartedit",
+            number: "05",
+            title: "SAP SmartEdit Connector",
+            company: "Contentstack",
+            category: "Enterprise Integration Engine",
+            description: "Automated extraction, transformation, validation, and loading (ETL) pipeline migrating enterprise commerce content into headless CMS architectures.",
+            bullets: [
+                "Engineered bidirectional ETL workflows extracting structured components from SAP SmartEdit and transforming them for headless schemas.",
+                "Established reusable migration pipelines reducing manual content onboarding from days to automated script runs.",
+                "Validated and executed 7+ production migration workflows transforming 10,000+ mission-critical commerce entries."
+            ],
+            stack: ["Node.js", "ETL Pipelines", "Contentstack APIs", "Data Transformation", "Enterprise Integration"],
+            metric: "7+ Workflows · 10,000+ Entries",
+            isInternal: true
+        }
+    ]
+};
+
+// Preserved for backwards compatibility
+export const authenticProjects = projectsData.flagship;
