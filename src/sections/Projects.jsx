@@ -55,38 +55,164 @@ const Projects = () => {
                 // Header reveal
                 if (headerRef.current) {
                     gsap.from(headerRef.current, {
-                        y: 20,
+                        y: 18,
+                        opacity: 0,
                         duration: 0.5,
                         ease: "power2.out",
                         scrollTrigger: {
                             trigger: headerRef.current,
-                            start: "top 95%",
+                            start: "top 92%",
                             once: true,
                         },
                     });
                 }
 
-                // Project cards staggered reveals
-                const cards = [satatRef.current, solutionLibRef.current, arrhythmiaRef.current, csToCsRef.current, sapSmartEditRef.current];
-                cards.forEach((card) => {
-                    if (!card) return;
-                    gsap.from(card, {
+                // 1. SATAT Card Reveal
+                if (satatRef.current) {
+                    gsap.from(satatRef.current, {
                         y: 24,
-                        duration: 0.5,
+                        opacity: 0,
+                        duration: 0.55,
                         ease: "power2.out",
                         scrollTrigger: {
-                            trigger: card,
-                            start: "top 95%",
+                            trigger: satatRef.current,
+                            start: "top 88%",
                             once: true,
                         },
                     });
-                });
+                }
+
+                // 2. Solution Library Card + Staggered Phase Diagram
+                if (solutionLibRef.current) {
+                    gsap.from(solutionLibRef.current, {
+                        y: 24,
+                        opacity: 0,
+                        duration: 0.55,
+                        ease: "power2.out",
+                        scrollTrigger: {
+                            trigger: solutionLibRef.current,
+                            start: "top 88%",
+                            once: true,
+                        },
+                    });
+                    const phases = solutionLibRef.current.querySelectorAll(".solution-phase");
+                    if (phases.length > 0) {
+                        gsap.from(phases, {
+                            y: 12,
+                            opacity: 0,
+                            duration: 0.45,
+                            stagger: 0.1,
+                            ease: "power2.out",
+                            scrollTrigger: {
+                                trigger: solutionLibRef.current,
+                                start: "top 80%",
+                                once: true,
+                            },
+                        });
+                    }
+                }
+
+                // 3. Arrhythmia Detection Card + Visual Reveal
+                if (arrhythmiaRef.current) {
+                    gsap.from(arrhythmiaRef.current, {
+                        y: 24,
+                        opacity: 0,
+                        duration: 0.55,
+                        ease: "power2.out",
+                        scrollTrigger: {
+                            trigger: arrhythmiaRef.current,
+                            start: "top 88%",
+                            once: true,
+                        },
+                    });
+                    const visual = arrhythmiaRef.current.querySelector(".arrhythmia-visual");
+                    if (visual) {
+                        gsap.from(visual, {
+                            scale: 0.97,
+                            opacity: 0,
+                            duration: 0.5,
+                            ease: "power2.out",
+                            scrollTrigger: {
+                                trigger: visual,
+                                start: "top 85%",
+                                once: true,
+                            },
+                        });
+                    }
+                }
+
+                // 4. CS-to-CS Migration Tool Card + Staggered Pipeline Steps
+                if (csToCsRef.current) {
+                    gsap.from(csToCsRef.current, {
+                        y: 24,
+                        opacity: 0,
+                        duration: 0.55,
+                        ease: "power2.out",
+                        scrollTrigger: {
+                            trigger: csToCsRef.current,
+                            start: "top 88%",
+                            once: true,
+                        },
+                    });
+                    const steps = csToCsRef.current.querySelectorAll(".migration-step");
+                    if (steps.length > 0) {
+                        gsap.from(steps, {
+                            y: 12,
+                            opacity: 0,
+                            duration: 0.45,
+                            stagger: 0.1,
+                            ease: "power2.out",
+                            scrollTrigger: {
+                                trigger: csToCsRef.current,
+                                start: "top 80%",
+                                once: true,
+                            },
+                        });
+                    }
+                }
+
+                // 5. SAP SmartEdit Connector Card + Progressive ETL Stages
+                if (sapSmartEditRef.current) {
+                    gsap.from(sapSmartEditRef.current, {
+                        y: 24,
+                        opacity: 0,
+                        duration: 0.55,
+                        ease: "power2.out",
+                        scrollTrigger: {
+                            trigger: sapSmartEditRef.current,
+                            start: "top 88%",
+                            once: true,
+                        },
+                    });
+                    const stages = sapSmartEditRef.current.querySelectorAll(".etl-stage");
+                    if (stages.length > 0) {
+                        gsap.from(stages, {
+                            y: 12,
+                            opacity: 0,
+                            duration: 0.45,
+                            stagger: 0.1,
+                            ease: "power2.out",
+                            scrollTrigger: {
+                                trigger: sapSmartEditRef.current,
+                                start: "top 80%",
+                                once: true,
+                            },
+                        });
+                    }
+                }
             });
 
             mm.add("(prefers-reduced-motion: reduce)", () => {
                 gsap.set(
-                    [headerRef.current, satatRef.current, solutionLibRef.current, arrhythmiaRef.current, csToCsRef.current, sapSmartEditRef.current],
-                    { opacity: 1, y: 0 }
+                    [
+                        headerRef.current,
+                        satatRef.current,
+                        solutionLibRef.current,
+                        arrhythmiaRef.current,
+                        csToCsRef.current,
+                        sapSmartEditRef.current,
+                    ],
+                    { opacity: 1, y: 0, scale: 1 }
                 );
             });
         },
@@ -104,11 +230,11 @@ const Projects = () => {
         <section
             id="work"
             ref={sectionRef}
-            className="relative w-full py-24 md:py-32 paper-texture border-t border-[#141413]/10"
+            className="relative w-full py-16 md:py-24 lg:py-28 paper-texture border-t border-[#141413]/10"
         >
             <div className="page-container w-full">
                 {/* SECTION HEADER */}
-                <div ref={headerRef} className="mb-14 md:mb-20">
+                <div ref={headerRef} className="mb-10 md:mb-14">
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#141413]/5 border border-[#141413]/10 text-xs font-editorial-mono text-[#5C5955] uppercase tracking-wider mb-4">
                         <span className="w-1.5 h-1.5 rounded-full bg-[#D95338]" />
                         <span>02 / Selected Work</span>
@@ -134,7 +260,7 @@ const Projects = () => {
                 <div
                     id="satat"
                     ref={satatRef}
-                    className="mb-16 md:mb-24 rounded-3xl bg-[#F2EEE7]/70 border border-[#141413]/12 p-6 sm:p-8 md:p-12 shadow-xs hover:border-[#141413]/25 transition-all duration-300"
+                    className="mb-12 md:mb-16 rounded-3xl bg-[#F2EEE7]/70 border border-[#141413]/12 p-6 sm:p-8 md:p-12 shadow-xs hover:border-[#141413]/25 transition-all duration-300"
                 >
                     {/* Project Header & Highlights */}
                     <div className="mb-10">
@@ -181,19 +307,19 @@ const Projects = () => {
                                         href={satat.links.live}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#141413] text-[#FAF7F3] text-xs sm:text-sm font-editorial-sans font-semibold hover:bg-[#3A6351] transition-colors duration-200 shadow-xs"
+                                        className="btn-primary group"
                                     >
                                         <span>Launch Live Product</span>
-                                        <span className="text-xs font-mono">↗</span>
+                                        <span className="arrow-icon text-xs">↗</span>
                                     </a>
                                     <a
                                         href={satat.links.github}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#FAF7F3] border border-[#141413]/20 text-[#141413] text-xs sm:text-sm font-editorial-sans font-semibold hover:bg-[#141413] hover:text-[#FAF7F3] transition-colors duration-200"
+                                        className="btn-secondary group"
                                     >
                                         <span>GitHub Repository</span>
-                                        <span className="text-xs font-mono">↗</span>
+                                        <span className="arrow-icon text-xs">↗</span>
                                     </a>
                                 </div>
                             </div>
@@ -229,11 +355,12 @@ const Projects = () => {
                                 return (
                                     <button
                                         key={scene.id}
+                                        type="button"
                                         onClick={() => setActiveSceneId(scene.id)}
-                                        className={`p-3 sm:p-3.5 rounded-xl text-left border transition-all duration-200 flex flex-col justify-between ${
+                                        className={`p-3 sm:p-3.5 rounded-xl text-left border transition-all duration-200 flex flex-col justify-between cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#141413] ${
                                             isActive
-                                                ? "bg-[#141413] text-[#FAF7F3] border-[#141413] shadow-sm"
-                                                : "bg-[#FAF7F3] text-[#5C5955] border-[#141413]/10 hover:border-[#141413]/25 hover:bg-[#F2EEE7]"
+                                                ? "bg-[#141413] text-[#FAF7F3] border-[#141413] shadow-xs"
+                                                : "bg-[#FAF7F3] text-[#5C5955] border-[#141413]/10 hover:border-[#141413]/30 hover:bg-[#F2EEE7] hover:-translate-y-0.5"
                                         }`}
                                     >
                                         <div className={`text-[10px] font-editorial-mono font-semibold uppercase ${
@@ -251,8 +378,8 @@ const Projects = () => {
                             })}
                         </div>
 
-                        {/* Active Scene Display */}
-                        <div className="w-full">
+                        {/* Active Scene Display with smooth cross-fade */}
+                        <div className="w-full transition-opacity duration-200" key={activeSceneId}>
                             {activeSceneId === "connected" && <SceneConnectedSystem />}
                             {activeSceneId === "meal-pipeline" && <SceneMealPipeline />}
                             {activeSceneId === "orbit-context" && <SceneOrbitContext />}
@@ -267,7 +394,7 @@ const Projects = () => {
                 <div
                     id="solution-library"
                     ref={solutionLibRef}
-                    className="mb-16 md:mb-24 rounded-3xl bg-[#FAF7F3] border border-[#141413]/15 p-6 sm:p-8 md:p-12 shadow-xs hover:border-[#141413]/30 transition-all duration-300"
+                    className="mb-12 md:mb-16 rounded-3xl bg-[#FAF7F3] border border-[#141413]/15 p-6 sm:p-8 md:p-12 shadow-xs hover:border-[#141413]/30 transition-all duration-300"
                 >
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                         {/* Visual Side: Architecture Blueprint */}
@@ -280,7 +407,7 @@ const Projects = () => {
 
                                 {/* Flow Diagram */}
                                 <div className="my-auto py-4 space-y-3">
-                                    <div className="p-3 rounded-xl bg-[#212120] border border-[#FAF7F3]/10">
+                                    <div className="solution-phase p-3 rounded-xl bg-[#212120] border border-[#FAF7F3]/10">
                                         <div className="flex items-center justify-between text-[11px] font-editorial-mono text-[#8E8A83]">
                                             <span>PHASE 01</span>
                                             <span className="text-emerald-400">Standardized Schema</span>
@@ -295,7 +422,7 @@ const Projects = () => {
 
                                     <div className="flex justify-center text-[#8E8A83] text-xs font-mono">↓</div>
 
-                                    <div className="p-3 rounded-xl bg-[#212120] border border-[#FAF7F3]/10">
+                                    <div className="solution-phase p-3 rounded-xl bg-[#212120] border border-[#FAF7F3]/10">
                                         <div className="flex items-center justify-between text-[11px] font-editorial-mono text-[#8E8A83]">
                                             <span>PHASE 02</span>
                                             <span className="text-amber-400">Taxonomy &amp; Discovery</span>
@@ -310,7 +437,7 @@ const Projects = () => {
 
                                     <div className="flex justify-center text-[#8E8A83] text-xs font-mono">↓</div>
 
-                                    <div className="p-3 rounded-xl bg-[#2B2927] border border-amber-400/30">
+                                    <div className="solution-phase p-3 rounded-xl bg-[#2B2927] border border-amber-400/30">
                                         <div className="flex items-center justify-between text-[11px] font-editorial-mono text-amber-400">
                                             <span>IMPACT</span>
                                             <span className="font-bold">Verified Velocity</span>
@@ -400,7 +527,7 @@ const Projects = () => {
                 <div
                     id="arrhythmia"
                     ref={arrhythmiaRef}
-                    className="mb-16 md:mb-24 rounded-3xl bg-[#F2EEE7]/70 border border-[#141413]/12 p-6 sm:p-8 md:p-12 shadow-xs hover:border-[#141413]/25 transition-all duration-300"
+                    className="mb-12 md:mb-16 rounded-3xl bg-[#F2EEE7]/70 border border-[#141413]/12 p-6 sm:p-8 md:p-12 shadow-xs hover:border-[#141413]/25 transition-all duration-300"
                 >
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                         {/* Narrative Side */}
@@ -458,17 +585,17 @@ const Projects = () => {
                                     href={arrhythmia.links.github}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#141413] text-[#FAF7F3] text-xs sm:text-sm font-editorial-sans font-semibold hover:bg-[#D95338] transition-colors duration-200 shadow-xs"
+                                    className="btn-primary group"
                                 >
                                     <span>GitHub Research Repository</span>
-                                    <span className="text-xs font-mono">↗</span>
+                                    <span className="arrow-icon text-xs">↗</span>
                                 </a>
                             </div>
                         </div>
 
                         {/* Visual Side: Real Clinical Plot */}
                         <div className="lg:col-span-5">
-                            <div className="relative rounded-2xl bg-[#FAF7F3] border border-[#141413]/15 overflow-hidden shadow-md flex flex-col justify-between">
+                            <div className="arrhythmia-visual relative rounded-2xl bg-[#FAF7F3] border border-[#141413]/15 overflow-hidden shadow-md flex flex-col justify-between">
                                 <div className="flex items-center justify-between px-4 py-3 bg-[#FAF7F3] border-b border-[#141413]/10 text-xs font-editorial-mono text-[#7A756F]">
                                     <div className="flex items-center gap-2">
                                         <span className="w-2 h-2 rounded-full bg-[#D95338] animate-pulse" />
@@ -581,7 +708,7 @@ const Projects = () => {
 
                                 <div className="my-auto py-4 space-y-3">
                                     {/* Source */}
-                                    <div className="p-3 rounded-xl bg-[#212120] border border-[#FAF7F3]/10">
+                                    <div className="migration-step p-3 rounded-xl bg-[#212120] border border-[#FAF7F3]/10">
                                         <div className="flex items-center justify-between text-[11px] font-editorial-mono text-[#8E8A83]">
                                             <span>STEP 01 · EXTRACTION</span>
                                             <span className="text-sky-400">Source Stack (NA / EU)</span>
@@ -597,7 +724,7 @@ const Projects = () => {
                                     <div className="flex justify-center text-[#8E8A83] text-xs font-mono">↓</div>
 
                                     {/* Resolver */}
-                                    <div className="p-3 rounded-xl bg-[#212120] border border-[#FAF7F3]/10">
+                                    <div className="migration-step p-3 rounded-xl bg-[#212120] border border-[#FAF7F3]/10">
                                         <div className="flex items-center justify-between text-[11px] font-editorial-mono text-[#8E8A83]">
                                             <span>STEP 02 · RESOLVER</span>
                                             <span className="text-amber-400">Schema Validation</span>
@@ -613,7 +740,7 @@ const Projects = () => {
                                     <div className="flex justify-center text-[#8E8A83] text-xs font-mono">↓</div>
 
                                     {/* Target */}
-                                    <div className="p-3 rounded-xl bg-[#2B2927] border border-emerald-500/30">
+                                    <div className="migration-step p-3 rounded-xl bg-[#2B2927] border border-emerald-500/30">
                                         <div className="flex items-center justify-between text-[11px] font-editorial-mono text-emerald-400">
                                             <span>STEP 03 · VERIFICATION</span>
                                             <span className="font-bold">Target Stack Complete</span>
@@ -658,7 +785,7 @@ const Projects = () => {
 
                                 <div className="my-auto py-4 space-y-3">
                                     {/* E: Extraction */}
-                                    <div className="p-3 rounded-xl bg-[#212120] border border-[#FAF7F3]/10">
+                                    <div className="etl-stage p-3 rounded-xl bg-[#212120] border border-[#FAF7F3]/10">
                                         <div className="flex items-center justify-between text-[11px] font-editorial-mono text-[#8E8A83]">
                                             <span>STAGE 1 · EXTRACTION</span>
                                             <span className="text-amber-400">SAP SmartEdit</span>
@@ -674,7 +801,7 @@ const Projects = () => {
                                     <div className="flex justify-center text-[#8E8A83] text-xs font-mono">↓</div>
 
                                     {/* T: Transformation */}
-                                    <div className="p-3 rounded-xl bg-[#212120] border border-[#FAF7F3]/10">
+                                    <div className="etl-stage p-3 rounded-xl bg-[#212120] border border-[#FAF7F3]/10">
                                         <div className="flex items-center justify-between text-[11px] font-editorial-mono text-[#8E8A83]">
                                             <span>STAGE 2 · TRANSFORMATION</span>
                                             <span className="text-sky-400">Normalization Engine</span>
@@ -690,7 +817,7 @@ const Projects = () => {
                                     <div className="flex justify-center text-[#8E8A83] text-xs font-mono">↓</div>
 
                                     {/* L: Loading */}
-                                    <div className="p-3 rounded-xl bg-[#2B2927] border border-sky-400/30">
+                                    <div className="etl-stage p-3 rounded-xl bg-[#2B2927] border border-sky-400/30">
                                         <div className="flex items-center justify-between text-[11px] font-editorial-mono text-sky-400">
                                             <span>STAGE 3 · DELIVERY</span>
                                             <span className="font-bold">Contentstack Headless</span>

@@ -42,13 +42,13 @@ const NavBar = () => {
                 </a>
 
                 {/* Desktop Navigation Links */}
-                <nav className="hidden md:flex items-center gap-8 lg:gap-11">
-                    <ul className="flex items-center gap-7 lg:gap-9">
+                <nav className="hidden md:flex items-center gap-6 lg:gap-10">
+                    <ul className="flex items-center gap-5 lg:gap-8">
                         {navLinks.map(({ name, link }) => (
                             <li key={name}>
                                 <a
                                     href={link}
-                                    className="font-editorial-sans text-[15px] font-medium text-[#4A4744] hover:text-[#141413] transition-colors relative py-1"
+                                    className="nav-link"
                                 >
                                     {name}
                                 </a>
@@ -65,10 +65,10 @@ const NavBar = () => {
                     {/* Direct Contact Button */}
                     <a
                         href="#contact"
-                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#141413] text-[#FAF7F3] text-sm font-editorial-sans font-medium hover:bg-[#333331] transition-all duration-200 shadow-xs hover:shadow-md shrink-0 whitespace-nowrap"
+                        className="btn-primary group text-xs sm:text-sm"
                     >
                         <span>Let's Connect</span>
-                        <span className="text-xs">↗</span>
+                        <span className="arrow-icon text-xs">↗</span>
                     </a>
                 </nav>
 
@@ -128,9 +128,10 @@ const NavBar = () => {
                         <a
                             href="#contact"
                             onClick={() => setMobileMenuOpen(false)}
-                            className="w-full py-3 rounded-full bg-[#141413] text-[#FAF7F3] text-center text-sm font-editorial-sans font-medium tracking-wide shadow-xs"
+                            className="btn-primary w-full group py-3"
                         >
-                            Let's Connect ↗
+                            <span>Let's Connect</span>
+                            <span className="arrow-icon text-xs">↗</span>
                         </a>
                     </div>
                 </div>
