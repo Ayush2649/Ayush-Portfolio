@@ -2,6 +2,10 @@ import React from "react";
 import NavBar from "./components/NavBar.jsx";
 import Hero from "./sections/Hero.jsx";
 import Projects from "./sections/Projects.jsx";
+import Experience from "./sections/Experience.jsx";
+import Skills from "./sections/Skills.jsx";
+import Resume from "./sections/Resume.jsx";
+import Contact from "./sections/Contact.jsx";
 
 const App = () => {
     return (
@@ -10,6 +14,10 @@ const App = () => {
             <main id="main-content">
                 <Hero />
                 <Projects />
+                <Experience />
+                <Skills />
+                <Resume />
+                <Contact />
             </main>
         </div>
     );

@@ -44,7 +44,8 @@ const Projects = () => {
     const satatRef = useRef(null);
     const solutionLibRef = useRef(null);
     const arrhythmiaRef = useRef(null);
-    const additionalGridRef = useRef(null);
+    const csToCsRef = useRef(null);
+    const sapSmartEditRef = useRef(null);
 
     useGSAP(
         () => {
@@ -53,48 +54,38 @@ const Projects = () => {
             mm.add("(prefers-reduced-motion: no-preference)", () => {
                 // Header reveal
                 if (headerRef.current) {
-                    gsap.fromTo(
-                        headerRef.current,
-                        { y: 25, opacity: 0 },
-                        {
-                            y: 0,
-                            opacity: 1,
-                            duration: 0.6,
-                            ease: "power2.out",
-                            scrollTrigger: {
-                                trigger: headerRef.current,
-                                start: "top 90%",
-                                once: true,
-                            },
-                        }
-                    );
+                    gsap.from(headerRef.current, {
+                        y: 20,
+                        duration: 0.5,
+                        ease: "power2.out",
+                        scrollTrigger: {
+                            trigger: headerRef.current,
+                            start: "top 95%",
+                            once: true,
+                        },
+                    });
                 }
 
                 // Project cards staggered reveals
-                const cards = [satatRef.current, solutionLibRef.current, arrhythmiaRef.current, additionalGridRef.current];
+                const cards = [satatRef.current, solutionLibRef.current, arrhythmiaRef.current, csToCsRef.current, sapSmartEditRef.current];
                 cards.forEach((card) => {
                     if (!card) return;
-                    gsap.fromTo(
-                        card,
-                        { y: 30, opacity: 0 },
-                        {
-                            y: 0,
-                            opacity: 1,
-                            duration: 0.65,
-                            ease: "power2.out",
-                            scrollTrigger: {
-                                trigger: card,
-                                start: "top 92%",
-                                once: true,
-                            },
-                        }
-                    );
+                    gsap.from(card, {
+                        y: 24,
+                        duration: 0.5,
+                        ease: "power2.out",
+                        scrollTrigger: {
+                            trigger: card,
+                            start: "top 95%",
+                            once: true,
+                        },
+                    });
                 });
             });
 
             mm.add("(prefers-reduced-motion: reduce)", () => {
                 gsap.set(
-                    [headerRef.current, satatRef.current, solutionLibRef.current, arrhythmiaRef.current, additionalGridRef.current],
+                    [headerRef.current, satatRef.current, solutionLibRef.current, arrhythmiaRef.current, csToCsRef.current, sapSmartEditRef.current],
                     { opacity: 1, y: 0 }
                 );
             });
@@ -106,6 +97,8 @@ const Projects = () => {
     const satat = flagship[0];
     const solutionLib = flagship[1];
     const arrhythmia = flagship[2];
+    const csToCs = additional[0];
+    const sapSmartEdit = additional[1];
 
     return (
         <section
@@ -139,6 +132,7 @@ const Projects = () => {
                     PROJECT 01: SATAT (Interactive Flagship Showcase)
                 ======================================================== */}
                 <div
+                    id="satat"
                     ref={satatRef}
                     className="mb-16 md:mb-24 rounded-3xl bg-[#F2EEE7]/70 border border-[#141413]/12 p-6 sm:p-8 md:p-12 shadow-xs hover:border-[#141413]/25 transition-all duration-300"
                 >
@@ -271,6 +265,7 @@ const Projects = () => {
                     PROJECT 02: SOLUTION LIBRARY (Enterprise Case Study)
                 ======================================================== */}
                 <div
+                    id="solution-library"
                     ref={solutionLibRef}
                     className="mb-16 md:mb-24 rounded-3xl bg-[#FAF7F3] border border-[#141413]/15 p-6 sm:p-8 md:p-12 shadow-xs hover:border-[#141413]/30 transition-all duration-300"
                 >
@@ -403,6 +398,7 @@ const Projects = () => {
                     PROJECT 03: EXPLAINABLE ARRHYTHMIA DETECTION (Research)
                 ======================================================== */}
                 <div
+                    id="arrhythmia"
                     ref={arrhythmiaRef}
                     className="mb-16 md:mb-24 rounded-3xl bg-[#F2EEE7]/70 border border-[#141413]/12 p-6 sm:p-8 md:p-12 shadow-xs hover:border-[#141413]/25 transition-all duration-300"
                 >
@@ -505,75 +501,274 @@ const Projects = () => {
                 </div>
 
                 {/* ========================================================
-                    PROJECTS 04 & 05: INTERNAL MIGRATION ENGINES (Contentstack)
+                    PROJECT 04: CS-TO-CS MIGRATION TOOL (Migration Workflow Engine)
                 ======================================================== */}
-                <div ref={additionalGridRef} className="pt-8 border-t border-[#141413]/15">
-                    <div className="mb-8">
-                        <div className="text-xs font-editorial-mono text-[#7A756F] uppercase tracking-wider mb-1">
-                            Enterprise Internal Infrastructure
-                        </div>
-                        <h3 className="font-editorial-sans font-black text-xl sm:text-2xl text-[#141413] tracking-tight uppercase">
-                            Migration &amp; Integration Tooling
-                        </h3>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-                        {additional.map((project) => (
-                            <div
-                                key={project.id}
-                                className="rounded-2xl bg-[#F2EEE7]/80 border border-[#141413]/12 p-6 sm:p-7 flex flex-col justify-between hover:border-[#141413]/25 hover:-translate-y-0.5 transition-all duration-200"
-                            >
-                                <div>
-                                    <div className="flex items-center justify-between text-xs font-editorial-mono mb-3">
-                                        <span className="font-bold text-[#141413]">
-                                            [ {project.number} ]
-                                        </span>
-                                        <span className="px-2.5 py-0.5 rounded-full bg-[#141413]/5 text-[#141413] font-semibold border border-[#141413]/10">
-                                            {project.company} Internal
-                                        </span>
-                                    </div>
-
-                                    <h4 className="font-editorial-sans font-black text-xl text-[#141413] tracking-tight uppercase">
-                                        {project.title}
-                                    </h4>
-                                    <div className="inline-block mt-1 mb-3 px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-800 text-[11px] font-editorial-mono font-semibold">
-                                        {project.metric}
-                                    </div>
-
-                                    <p className="text-xs sm:text-sm font-editorial-sans text-[#4A4744] leading-relaxed mb-4">
-                                        {project.description}
-                                    </p>
-
-                                    <ul className="space-y-2 mb-6">
-                                        {project.bullets.map((b, idx) => (
-                                            <li
-                                                key={idx}
-                                                className="flex items-start gap-2 text-xs font-editorial-sans text-[#5C5955]"
-                                            >
-                                                <span className="w-1 h-1 rounded-full bg-[#141413] mt-1.5 shrink-0" />
-                                                <span>{b}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
+                <div
+                    id="cs-to-cs"
+                    ref={csToCsRef}
+                    className="mb-12 md:mb-16 rounded-3xl bg-[#FAF7F3] border border-[#141413]/15 p-6 sm:p-8 md:p-12 shadow-xs hover:border-[#141413]/30 transition-all duration-300"
+                >
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                        {/* Narrative Side (7 cols) */}
+                        <div className="lg:col-span-7 flex flex-col justify-between">
+                            <div>
+                                <div className="flex flex-wrap items-center gap-2.5 mb-4 text-xs font-editorial-mono">
+                                    <span className="font-bold text-[#141413] tracking-wider">
+                                        [ {csToCs.number} ]
+                                    </span>
+                                    <span className="px-2.5 py-0.5 rounded-full bg-[#141413] text-[#FAF7F3] font-semibold">
+                                        Contentstack · Enterprise
+                                    </span>
+                                    <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-800 font-bold border border-emerald-500/20">
+                                        {csToCs.metric}
+                                    </span>
                                 </div>
 
-                                <div>
-                                    <div className="flex flex-wrap gap-1.5 pt-4 border-t border-[#141413]/10">
-                                        {project.stack.map((t) => (
-                                            <span
-                                                key={t}
-                                                className="px-2 py-0.5 rounded bg-[#FAF7F3] border border-[#141413]/8 text-[10px] font-editorial-mono text-[#383633]"
-                                            >
-                                                {t}
-                                            </span>
-                                        ))}
-                                    </div>
-                                    <div className="mt-3 text-[11px] font-editorial-mono text-[#8E8A83]">
-                                        Enterprise Internal Engineering · Contentstack
-                                    </div>
+                                <h3 className="font-editorial-sans font-black text-2xl sm:text-3xl md:text-4xl text-[#141413] tracking-tight uppercase">
+                                    {csToCs.title}
+                                </h3>
+                                <p className="font-editorial-serif italic text-base sm:text-lg text-[#5C5955] mt-1 mb-4">
+                                    High-Throughput Cross-Region Migration &amp; Schema Transformation Engine
+                                </p>
+
+                                <p className="text-sm sm:text-base font-editorial-sans text-[#2B2927] leading-relaxed mb-6">
+                                    {csToCs.description}
+                                </p>
+
+                                <ul className="space-y-2.5 mb-6">
+                                    {csToCs.bullets.map((bullet, idx) => (
+                                        <li
+                                            key={idx}
+                                            className="flex items-start gap-2.5 text-xs sm:text-sm font-editorial-sans text-[#4A4744]"
+                                        >
+                                            <span className="w-1.5 h-1.5 rounded-full bg-[#141413] mt-1.5 shrink-0" />
+                                            <span>{bullet}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+
+                                <div className="flex flex-wrap gap-1.5 mb-6">
+                                    {csToCs.stack.map((tech) => (
+                                        <span
+                                            key={tech}
+                                            className="px-2.5 py-1 rounded-md bg-[#F2EEE7] border border-[#141413]/10 text-[11px] font-editorial-mono text-[#383633] font-medium"
+                                        >
+                                            {tech}
+                                        </span>
+                                    ))}
                                 </div>
                             </div>
-                        ))}
+
+                            <div className="pt-4 border-t border-[#141413]/10 flex items-center justify-between text-xs font-editorial-mono text-[#7A756F]">
+                                <div className="flex items-center gap-2">
+                                    <span className="w-2 h-2 rounded-full bg-emerald-600" />
+                                    <span>Professional Internal Engineering Project · Contentstack</span>
+                                </div>
+                                <span className="text-[11px] text-[#8E8A83]">Zero Data Corruption</span>
+                            </div>
+                        </div>
+
+                        {/* Visual Schematic Side (5 cols): High-Throughput Migration Workflow Engine */}
+                        <div className="lg:col-span-5">
+                            <div className="rounded-2xl bg-[#141413] text-[#FAF7F3] p-6 sm:p-7 shadow-lg flex flex-col justify-between min-h-[380px]">
+                                <div className="flex items-center justify-between pb-3 border-b border-[#FAF7F3]/15 text-xs font-editorial-mono text-[#8E8A83]">
+                                    <span className="flex items-center gap-2">
+                                        <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                                        <span>MIGRATION ENGINE PIPELINE</span>
+                                    </span>
+                                    <span className="text-emerald-400 font-semibold">CROSS-REGION</span>
+                                </div>
+
+                                <div className="my-auto py-4 space-y-3">
+                                    {/* Source */}
+                                    <div className="p-3 rounded-xl bg-[#212120] border border-[#FAF7F3]/10">
+                                        <div className="flex items-center justify-between text-[11px] font-editorial-mono text-[#8E8A83]">
+                                            <span>STEP 01 · EXTRACTION</span>
+                                            <span className="text-sky-400">Source Stack (NA / EU)</span>
+                                        </div>
+                                        <div className="text-sm font-editorial-sans font-bold text-[#FAF7F3] mt-0.5">
+                                            Async Extraction Queue
+                                        </div>
+                                        <div className="text-[11px] text-[#A6A29A] mt-1 font-editorial-mono">
+                                            ContentTypes · Global Fields · Nested Assets
+                                        </div>
+                                    </div>
+
+                                    <div className="flex justify-center text-[#8E8A83] text-xs font-mono">↓</div>
+
+                                    {/* Resolver */}
+                                    <div className="p-3 rounded-xl bg-[#212120] border border-[#FAF7F3]/10">
+                                        <div className="flex items-center justify-between text-[11px] font-editorial-mono text-[#8E8A83]">
+                                            <span>STEP 02 · RESOLVER</span>
+                                            <span className="text-amber-400">Schema Validation</span>
+                                        </div>
+                                        <div className="text-sm font-editorial-sans font-bold text-[#FAF7F3] mt-0.5">
+                                            Dependency &amp; Reference Graph
+                                        </div>
+                                        <div className="text-[11px] text-[#A6A29A] mt-1 font-editorial-mono">
+                                            UID Re-mapping · Circular Reference Resolution
+                                        </div>
+                                    </div>
+
+                                    <div className="flex justify-center text-[#8E8A83] text-xs font-mono">↓</div>
+
+                                    {/* Target */}
+                                    <div className="p-3 rounded-xl bg-[#2B2927] border border-emerald-500/30">
+                                        <div className="flex items-center justify-between text-[11px] font-editorial-mono text-emerald-400">
+                                            <span>STEP 03 · VERIFICATION</span>
+                                            <span className="font-bold">Target Stack Complete</span>
+                                        </div>
+                                        <div className="text-sm font-editorial-sans font-bold text-[#FAF7F3] mt-0.5">
+                                            High-Concurrency Batch Ingestion
+                                        </div>
+                                        <div className="text-[11px] text-[#D1CCC4] mt-1 font-editorial-mono">
+                                            20,000+ Verified Production Entries · 0% Corruption
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="pt-3 border-t border-[#FAF7F3]/15 flex items-center justify-between text-[11px] font-editorial-mono text-[#8E8A83]">
+                                    <span>High-Throughput CLI Engine</span>
+                                    <span className="text-emerald-400">20+ Stacks</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* ========================================================
+                    PROJECT 05: SAP SMARTEDIT CONNECTOR (ETL Transformation Engine)
+                ======================================================== */}
+                <div
+                    id="sap-smartedit"
+                    ref={sapSmartEditRef}
+                    className="mb-8 md:mb-12 rounded-3xl bg-[#F2EEE7]/80 border border-[#141413]/12 p-6 sm:p-8 md:p-12 shadow-xs hover:border-[#141413]/25 transition-all duration-300"
+                >
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                        {/* Visual Schematic Side (5 cols): ETL Stream Schematic (Order 2 on mobile, Order 1 on lg) */}
+                        <div className="lg:col-span-5 order-2 lg:order-1">
+                            <div className="rounded-2xl bg-[#141413] text-[#FAF7F3] p-6 sm:p-7 shadow-lg flex flex-col justify-between min-h-[380px]">
+                                <div className="flex items-center justify-between pb-3 border-b border-[#FAF7F3]/15 text-xs font-editorial-mono text-[#8E8A83]">
+                                    <span className="flex items-center gap-2">
+                                        <span className="w-2 h-2 rounded-full bg-sky-400 animate-pulse" />
+                                        <span>CMS ETL ARCHITECTURE</span>
+                                    </span>
+                                    <span className="text-sky-400 font-semibold">HEADLESS TRANSFORM</span>
+                                </div>
+
+                                <div className="my-auto py-4 space-y-3">
+                                    {/* E: Extraction */}
+                                    <div className="p-3 rounded-xl bg-[#212120] border border-[#FAF7F3]/10">
+                                        <div className="flex items-center justify-between text-[11px] font-editorial-mono text-[#8E8A83]">
+                                            <span>STAGE 1 · EXTRACTION</span>
+                                            <span className="text-amber-400">SAP SmartEdit</span>
+                                        </div>
+                                        <div className="text-sm font-editorial-sans font-bold text-[#FAF7F3] mt-0.5">
+                                            Monolithic Commerce Slots
+                                        </div>
+                                        <div className="text-[11px] text-[#A6A29A] mt-1 font-editorial-mono">
+                                            Catalogs · Page Layouts · Content Component Trees
+                                        </div>
+                                    </div>
+
+                                    <div className="flex justify-center text-[#8E8A83] text-xs font-mono">↓</div>
+
+                                    {/* T: Transformation */}
+                                    <div className="p-3 rounded-xl bg-[#212120] border border-[#FAF7F3]/10">
+                                        <div className="flex items-center justify-between text-[11px] font-editorial-mono text-[#8E8A83]">
+                                            <span>STAGE 2 · TRANSFORMATION</span>
+                                            <span className="text-sky-400">Normalization Engine</span>
+                                        </div>
+                                        <div className="text-sm font-editorial-sans font-bold text-[#FAF7F3] mt-0.5">
+                                            Schema Decoupling &amp; Mapping
+                                        </div>
+                                        <div className="text-[11px] text-[#A6A29A] mt-1 font-editorial-mono">
+                                            Deconstructs rigid CMS slots into modular components
+                                        </div>
+                                    </div>
+
+                                    <div className="flex justify-center text-[#8E8A83] text-xs font-mono">↓</div>
+
+                                    {/* L: Loading */}
+                                    <div className="p-3 rounded-xl bg-[#2B2927] border border-sky-400/30">
+                                        <div className="flex items-center justify-between text-[11px] font-editorial-mono text-sky-400">
+                                            <span>STAGE 3 · DELIVERY</span>
+                                            <span className="font-bold">Contentstack Headless</span>
+                                        </div>
+                                        <div className="text-sm font-editorial-sans font-bold text-[#FAF7F3] mt-0.5">
+                                            Omnichannel JSON API Delivery
+                                        </div>
+                                        <div className="text-[11px] text-[#D1CCC4] mt-1 font-editorial-mono">
+                                            10,000+ Production Entries · 7+ Reusable Workflows
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="pt-3 border-t border-[#FAF7F3]/15 flex items-center justify-between text-[11px] font-editorial-mono text-[#8E8A83]">
+                                    <span>Automated CMS Migration</span>
+                                    <span className="text-sky-400">Enterprise ETL</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Narrative Side (7 cols) */}
+                        <div className="lg:col-span-7 order-1 lg:order-2 flex flex-col justify-between">
+                            <div>
+                                <div className="flex flex-wrap items-center gap-2.5 mb-4 text-xs font-editorial-mono">
+                                    <span className="font-bold text-[#141413] tracking-wider">
+                                        [ {sapSmartEdit.number} ]
+                                    </span>
+                                    <span className="px-2.5 py-0.5 rounded-full bg-[#141413] text-[#FAF7F3] font-semibold">
+                                        Contentstack · Enterprise
+                                    </span>
+                                    <span className="px-2.5 py-0.5 rounded-full bg-sky-600/10 text-sky-800 font-bold border border-sky-600/20">
+                                        {sapSmartEdit.metric}
+                                    </span>
+                                </div>
+
+                                <h3 className="font-editorial-sans font-black text-2xl sm:text-3xl md:text-4xl text-[#141413] tracking-tight uppercase">
+                                    {sapSmartEdit.title}
+                                </h3>
+                                <p className="font-editorial-serif italic text-base sm:text-lg text-[#5C5955] mt-1 mb-4">
+                                    Automated CMS ETL Pipeline for Headless Commerce Migration
+                                </p>
+
+                                <p className="text-sm sm:text-base font-editorial-sans text-[#2B2927] leading-relaxed mb-6">
+                                    {sapSmartEdit.description}
+                                </p>
+
+                                <ul className="space-y-2.5 mb-6">
+                                    {sapSmartEdit.bullets.map((bullet, idx) => (
+                                        <li
+                                            key={idx}
+                                            className="flex items-start gap-2.5 text-xs sm:text-sm font-editorial-sans text-[#4A4744]"
+                                        >
+                                            <span className="w-1.5 h-1.5 rounded-full bg-[#141413] mt-1.5 shrink-0" />
+                                            <span>{bullet}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+
+                                <div className="flex flex-wrap gap-1.5 mb-6">
+                                    {sapSmartEdit.stack.map((tech) => (
+                                        <span
+                                            key={tech}
+                                            className="px-2.5 py-1 rounded-md bg-[#FAF7F3] border border-[#141413]/10 text-[11px] font-editorial-mono text-[#383633] font-medium"
+                                        >
+                                            {tech}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <div className="pt-4 border-t border-[#141413]/10 flex items-center justify-between text-xs font-editorial-mono text-[#7A756F]">
+                                <div className="flex items-center gap-2">
+                                    <span className="w-2 h-2 rounded-full bg-sky-700" />
+                                    <span>Professional Internal Engineering Project · Contentstack</span>
+                                </div>
+                                <span className="text-[11px] text-[#8E8A83]">Headless Commerce Integration</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
