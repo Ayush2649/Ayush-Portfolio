@@ -48,12 +48,12 @@ const Contact = () => {
         <section
             id="contact"
             ref={sectionRef}
-            className="relative w-full pt-20 md:pt-28 pb-12 paper-texture border-t border-[#141413]/10"
+            className="relative w-full pt-16 md:pt-24 lg:pt-28 pb-12 paper-texture border-t border-[#141413]/10"
         >
             <div className="page-container w-full">
                 <div ref={contentRef} className="max-w-5xl mx-auto">
                     {/* SECTION HEADER */}
-                    <div className="mb-12 md:mb-16 text-center md:text-left">
+                    <div className="mb-10 md:mb-14 text-center md:text-left">
                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#141413]/5 border border-[#141413]/10 text-xs font-editorial-mono text-[#5C5955] uppercase tracking-wider mb-4">
                             <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse" />
                             <span>06 / Direct Engagement</span>
@@ -67,7 +67,7 @@ const Contact = () => {
                     </div>
 
                     {/* CONTACT INTERACTION CARD */}
-                    <div className="rounded-3xl bg-[#F2EEE7]/85 border border-[#141413]/15 p-7 sm:p-10 md:p-12 mb-16 shadow-xs">
+                    <div className="rounded-3xl bg-[#F2EEE7]/85 border border-[#141413]/15 p-7 sm:p-10 md:p-12 mb-12 shadow-xs">
                         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                             {/* Left: Email CTA */}
                             <div className="lg:col-span-7 space-y-4">
@@ -77,7 +77,7 @@ const Contact = () => {
                                 <div className="break-all">
                                     <a
                                         href={`mailto:${personalInfo.email}`}
-                                        className="font-editorial-sans font-bold text-lg min-[380px]:text-xl sm:text-2xl md:text-4xl text-[#141413] hover:text-[#3A6351] transition-colors underline decoration-[#141413]/30 hover:decoration-[#3A6351] underline-offset-8"
+                                        className="font-editorial-sans font-bold text-lg min-[380px]:text-xl sm:text-2xl md:text-4xl text-[#141413] hover:text-[#D95338] transition-colors underline decoration-[#141413]/30 hover:decoration-[#D95338] underline-offset-8"
                                     >
                                         {personalInfo.email}
                                     </a>
@@ -86,12 +86,12 @@ const Contact = () => {
                                     <button
                                         type="button"
                                         onClick={handleCopyEmail}
-                                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#141413] text-[#FAF7F3] text-xs font-editorial-sans font-semibold hover:bg-[#333331] transition-all duration-200"
+                                        className="btn-primary group text-xs sm:text-sm"
                                     >
                                         {copied ? (
                                             <>
                                                 <svg
-                                                    className="w-3.5 h-3.5 text-emerald-400"
+                                                    className="w-3.5 h-3.5 text-emerald-300"
                                                     fill="none"
                                                     stroke="currentColor"
                                                     strokeWidth="2.5"
@@ -126,10 +126,10 @@ const Contact = () => {
                                     </button>
                                     <a
                                         href={`mailto:${personalInfo.email}`}
-                                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#FAF7F3] border border-[#141413]/15 text-[#141413] text-xs font-editorial-sans font-semibold hover:bg-[#FAF7F3]/70 transition-all duration-200"
+                                        className="btn-secondary group text-xs sm:text-sm"
                                     >
                                         <span>Open in Mail Client</span>
-                                        <span className="text-[10px]">↗</span>
+                                        <span className="arrow-icon text-[10px]">↗</span>
                                     </a>
                                 </div>
                             </div>
@@ -150,8 +150,8 @@ const Contact = () => {
                                     <span className="text-[#141413] font-medium">{personalInfo.location}</span>
                                 </div>
                                 <div className="flex items-center justify-between text-[11px] font-editorial-mono text-[#7A756F]">
-                                    <span>Coordinates</span>
-                                    <span className="text-[#141413] font-medium">{personalInfo.coordinates}</span>
+                                    <span>Focus</span>
+                                    <span className="text-[#141413] font-medium">Full-Stack &amp; Applied AI</span>
                                 </div>
                             </div>
                         </div>
@@ -164,13 +164,13 @@ const Contact = () => {
                                     href={url}
                                     target={name !== "Email" ? "_blank" : undefined}
                                     rel={name !== "Email" ? "noopener noreferrer" : undefined}
-                                    className="p-3.5 rounded-xl bg-[#FAF7F3] border border-[#141413]/10 hover:border-[#141413]/30 hover:bg-white transition-all duration-200 group flex flex-col justify-between"
+                                    className="p-3.5 rounded-xl bg-[#FAF7F3] border border-[#141413]/10 hover:border-[#141413]/30 hover:bg-[#FAF7F3] hover:-translate-y-0.5 transition-all duration-200 group flex flex-col justify-between"
                                 >
                                     <div className="flex items-center justify-between">
-                                        <span className="font-editorial-sans font-semibold text-xs text-[#141413] group-hover:text-[#3A6351] transition-colors">
+                                        <span className="font-editorial-sans font-semibold text-xs text-[#141413] group-hover:text-[#D95338] transition-colors">
                                             {name}
                                         </span>
-                                        <span className="text-xs text-[#8E8A83] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200">
+                                        <span className="arrow-icon text-xs text-[#8E8A83]">
                                             ↗
                                         </span>
                                     </div>
@@ -193,10 +193,10 @@ const Contact = () => {
                         </div>
                         <a
                             href="#top"
-                            className="inline-flex items-center gap-1.5 hover:text-[#141413] transition-colors font-editorial-mono text-[11px]"
+                            className="btn-secondary group text-xs py-1.5 px-3.5 font-editorial-mono"
                         >
                             <span>Back to Top</span>
-                            <span>↑</span>
+                            <span className="arrow-icon text-xs">↑</span>
                         </a>
                     </footer>
                 </div>

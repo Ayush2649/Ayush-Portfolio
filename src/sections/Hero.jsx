@@ -7,7 +7,8 @@ const Hero = () => {
     const heroRef = useRef(null);
     const portraitRef = useRef(null);
     const bgTypoRef = useRef(null);
-    const identityRef = useRef(null);
+    const nameRef = useRef(null);
+    const badgesRef = useRef(null);
 
     useGSAP(
         () => {
@@ -18,51 +19,60 @@ const Hero = () => {
             if (prefersReducedMotion) {
                 gsap.set(
                     [
-                        identityRef.current,
+                        nameRef.current,
+                        badgesRef.current,
                         bgTypoRef.current,
                         portraitRef.current,
                         ".hero-highlight-card",
                         ".hero-fade",
                     ],
-                    { opacity: 1, y: 0 }
+                    { opacity: 1, y: 0, scale: 1 }
                 );
                 return;
             }
 
-            const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+            const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
 
-            // 1. Reveal primary identity & background typography
+            // 1. Name reveal
             tl.fromTo(
-                identityRef.current,
-                { y: 25, opacity: 0 },
-                { y: 0, opacity: 1, duration: 0.9 }
+                nameRef.current,
+                { y: 18, opacity: 0 },
+                { y: 0, opacity: 1, duration: 0.45 }
             )
+                // 2. Role badge reveal
                 .fromTo(
-                    bgTypoRef.current,
-                    { y: 35, opacity: 0, scale: 0.98 },
-                    { y: 0, opacity: 1, scale: 1, duration: 1.1 },
-                    "-=0.6"
+                    badgesRef.current,
+                    { y: 12, opacity: 0 },
+                    { y: 0, opacity: 1, duration: 0.4 },
+                    "-=0.2"
                 )
-                // 2. Rise of the central portrait
+                // 3. Portrait reveal
                 .fromTo(
                     portraitRef.current,
-                    { y: 50, opacity: 0, scale: 0.96 },
-                    { y: 0, opacity: 1, scale: 1, duration: 1.1, ease: "power2.out" },
-                    "-=0.8"
+                    { y: 24, opacity: 0, scale: 0.98 },
+                    { y: 0, opacity: 1, scale: 1, duration: 0.55 },
+                    "-=0.25"
                 )
-                // 3. Staggered reveal of technical highlight blocks
+                // 4. Oversized background typography settles into position
+                .fromTo(
+                    bgTypoRef.current,
+                    { y: 20, opacity: 0, scale: 0.99 },
+                    { y: 0, opacity: 1, scale: 1, duration: 0.6 },
+                    "-=0.4"
+                )
+                // 5. Technical blocks reveal with a slight stagger
                 .fromTo(
                     ".hero-highlight-card",
-                    { y: 20, opacity: 0 },
-                    { y: 0, opacity: 1, duration: 0.6, stagger: 0.08 },
-                    "-=0.6"
+                    { y: 14, opacity: 0 },
+                    { y: 0, opacity: 1, duration: 0.4, stagger: 0.06 },
+                    "-=0.3"
                 )
-                // 4. Reveal bottom narrative and CTAs
+                // 6. Reveal bottom narrative and CTAs
                 .fromTo(
                     ".hero-fade",
-                    { y: 15, opacity: 0 },
-                    { y: 0, opacity: 1, duration: 0.7, stagger: 0.08 },
-                    "-=0.4"
+                    { y: 10, opacity: 0 },
+                    { y: 0, opacity: 1, duration: 0.4, stagger: 0.05 },
+                    "-=0.2"
                 );
 
             // Subtle restrained mouse parallax on desktop (>= 1200px)
@@ -105,7 +115,7 @@ const Hero = () => {
         <section
             id="about"
             ref={heroRef}
-            className="relative w-full min-h-[100dvh] pt-24 md:pt-28 pb-14 md:pb-20 flex flex-col justify-between overflow-x-hidden paper-texture"
+            className="relative w-full min-h-[100dvh] pt-28 sm:pt-32 md:pt-28 pb-14 md:pb-20 flex flex-col justify-between overflow-x-hidden paper-texture scroll-mt-24 md:scroll-mt-28"
         >
             <div id="top" className="absolute top-0 left-0" />
             {/* Top Status & Coordinates Bar */}
@@ -128,14 +138,20 @@ const Hero = () => {
             {/* Main Hero Composition Container */}
             <div className="page-container w-full my-auto flex flex-col items-center justify-center pt-5 md:pt-8 relative z-10">
                 {/* 1. PRIMARY IDENTITY & DUAL ROLE HEADER */}
-                <header ref={identityRef} className="text-center z-30 mb-2 md:mb-4 w-full">
+                <header className="text-center z-30 mb-2 md:mb-4 w-full">
                     {/* Primary Name Identity */}
-                    <h1 className="font-editorial-sans font-black tracking-tight text-[#141413] text-[clamp(2.4rem,7vw,5.75rem)] leading-[0.96] uppercase">
+                    <h1
+                        ref={nameRef}
+                        className="font-editorial-sans font-black tracking-tight text-[#141413] text-[clamp(2.4rem,7vw,5.75rem)] leading-[0.96] uppercase"
+                    >
                         {personalInfo.name}
                     </h1>
 
                     {/* Dual Role Badges: Communicates Software & AI Engineering identities */}
-                    <div className="mt-3 sm:mt-4 flex flex-col sm:flex-row items-center justify-center gap-2.5 sm:gap-4 font-editorial-sans w-full">
+                    <div
+                        ref={badgesRef}
+                        className="mt-3 sm:mt-4 flex flex-col sm:flex-row items-center justify-center gap-2.5 sm:gap-4 font-editorial-sans w-full"
+                    >
                         {/* Role 1: Software Engineer */}
                         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#141413] text-[#FAF7F3] text-xs sm:text-sm font-semibold tracking-wide shadow-xs">
                             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0" />
@@ -160,10 +176,10 @@ const Hero = () => {
                     - Tablet (768px - 1199px): Centered portrait on top, 4 cards arranged in 2 columns underneath.
                     - Mobile (< 768px): Centered portrait on top, 4 cards arranged in grouped stacks underneath.
                 */}
-                <div className="relative w-full flex flex-col items-center justify-center min-h-[340px] sm:min-h-[420px] md:min-h-[460px] lg:min-h-[500px] xl:min-h-[530px]">
+                <div className="relative w-full flex flex-col items-center justify-center min-h-[300px] sm:min-h-[380px] md:min-h-[440px] lg:min-h-[500px] xl:min-h-[530px]">
                     {/* Full-bleed Monumental Background Typography Layer */}
                     <div
-                        className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-screen pointer-events-none select-none z-0 overflow-hidden flex items-center justify-center"
+                        className="absolute top-0 left-1/2 -translate-x-1/2 w-screen pointer-events-none select-none z-0 overflow-hidden flex items-center justify-center h-[280px] xs:h-[310px] sm:h-[380px] md:h-[450px] lg:inset-y-0 lg:h-auto"
                         aria-hidden="true"
                     >
                         <div
@@ -174,7 +190,7 @@ const Hero = () => {
                                 <span>SOFTWARE</span>
                                 <span>ENGINEER</span>
                             </div>
-                            <span className="font-editorial-serif italic text-[#141413]/[0.04] md:text-[#141413]/[0.06] text-[clamp(1.15rem,2.2vw,2.5rem)] leading-tight mt-1.5 sm:mt-2 text-center">
+                            <span className="hidden md:inline font-editorial-serif italic text-[#141413]/[0.06] text-[clamp(1.15rem,2.2vw,2.5rem)] leading-tight mt-1.5 sm:mt-2 text-center">
                                 Applied AI &amp; Systems Architecture
                             </span>
                         </div>
@@ -213,7 +229,7 @@ const Hero = () => {
                             ref={portraitRef}
                             className="hero-flanked-portrait will-change-transform pointer-events-auto"
                         >
-                            <div className="relative w-[280px] sm:w-[340px] md:w-[390px] lg:w-[430px] xl:w-[460px]">
+                            <div className="relative w-[230px] xs:w-[260px] sm:w-[320px] md:w-[380px] lg:w-[430px] xl:w-[460px] max-w-[80vw]">
                                 <img
                                     src="/images/ayush-new-portrait.png"
                                     alt="Ayush Sahu — Software Engineer & AI Developer"
@@ -283,19 +299,19 @@ const Hero = () => {
                         <div className="flex flex-wrap items-center gap-3">
                             <a
                                 href="#work"
-                                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#141413] text-[#FAF7F3] text-sm font-editorial-sans font-medium hover:bg-[#333331] transition-all duration-200 shadow-sm hover:shadow-md shrink-0"
+                                className="btn-primary group"
                             >
                                 <span>Explore Featured Work</span>
-                                <span className="text-xs">↓</span>
+                                <span className="arrow-icon text-xs">↓</span>
                             </a>
                             <a
                                 href="https://github.com/Ayush2649"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-1.5 px-5 py-3 rounded-full border border-[#141413]/15 text-[#141413] text-sm font-editorial-sans font-medium hover:bg-[#F2EEE7] transition-all duration-200 shrink-0"
+                                className="btn-secondary group"
                             >
                                 <span>GitHub</span>
-                                <span className="text-xs">↗</span>
+                                <span className="arrow-icon text-xs">↗</span>
                             </a>
                         </div>
 
@@ -305,7 +321,7 @@ const Hero = () => {
                             className="inline-flex items-center gap-2 text-xs font-editorial-sans font-medium text-[#7A756F] hover:text-[#141413] transition-colors group"
                         >
                             <span>Scroll down to explore</span>
-                            <span className="inline-block transition-transform duration-300 group-hover:translate-y-1">
+                            <span className="arrow-icon inline-block">
                                 ↓
                             </span>
                         </a>

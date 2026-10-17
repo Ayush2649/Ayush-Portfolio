@@ -23,33 +23,36 @@ const SceneOrbitContext = () => {
                 </div>
 
                 {/* State Controller */}
-                <div className="inline-flex items-center p-1 rounded-full bg-[#FAF7F3] border border-[#141413]/15 text-xs font-editorial-sans">
+                <div className="inline-flex items-center p-1 rounded-full bg-[#FAF7F3] border border-[#141413]/15 text-xs font-editorial-sans shadow-2xs">
                     <button
+                        type="button"
                         onClick={() => setOrbitState("idle")}
-                        className={`px-3 py-1 rounded-full transition-all duration-200 font-medium ${
+                        className={`px-3.5 py-1.5 rounded-full transition-all duration-200 font-semibold cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#141413] ${
                             orbitState === "idle"
                                 ? "bg-[#141413] text-[#FAF7F3] shadow-xs"
-                                : "text-[#5C5955] hover:text-[#141413]"
+                                : "text-[#5C5955] hover:text-[#141413] hover:bg-[#F2EEE7]"
                         }`}
                     >
                         Idle
                     </button>
                     <button
+                        type="button"
                         onClick={() => setOrbitState("thinking")}
-                        className={`px-3 py-1 rounded-full transition-all duration-200 font-medium ${
+                        className={`px-3.5 py-1.5 rounded-full transition-all duration-200 font-semibold cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#141413] ${
                             orbitState === "thinking"
-                                ? "bg-[#D95338] text-[#FAF7F3] shadow-xs"
-                                : "text-[#5C5955] hover:text-[#141413]"
+                                ? "bg-[#141413] text-[#FAF7F3] shadow-xs"
+                                : "text-[#5C5955] hover:text-[#141413] hover:bg-[#F2EEE7]"
                         }`}
                     >
                         Thinking
                     </button>
                     <button
+                        type="button"
                         onClick={() => setOrbitState("responding")}
-                        className={`px-3 py-1 rounded-full transition-all duration-200 font-medium ${
+                        className={`px-3.5 py-1.5 rounded-full transition-all duration-200 font-semibold cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#141413] ${
                             orbitState === "responding"
-                                ? "bg-[#3A6351] text-[#FAF7F3] shadow-xs"
-                                : "text-[#5C5955] hover:text-[#141413]"
+                                ? "bg-[#141413] text-[#FAF7F3] shadow-xs"
+                                : "text-[#5C5955] hover:text-[#141413] hover:bg-[#F2EEE7]"
                         }`}
                     >
                         Responding

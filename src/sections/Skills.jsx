@@ -151,11 +151,11 @@ const Skills = () => {
         <section
             id="skills"
             ref={sectionRef}
-            className="relative w-full py-24 md:py-32 paper-texture border-t border-[#141413]/10"
+            className="relative w-full py-16 md:py-24 lg:py-28 paper-texture border-t border-[#141413]/10"
         >
             <div className="page-container w-full">
                 {/* SECTION HEADER */}
-                <div ref={headerRef} className="mb-12 md:mb-16">
+                <div ref={headerRef} className="mb-10 md:mb-14">
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#141413]/5 border border-[#141413]/10 text-xs font-editorial-mono text-[#5C5955] uppercase tracking-wider mb-4">
                         <span className="w-1.5 h-1.5 rounded-full bg-[#D95338]" />
                         <span>04 / Technical Capabilities</span>
@@ -172,13 +172,14 @@ const Skills = () => {
                     </div>
 
                     {/* Interactive Filter Pills */}
-                    <div className="flex flex-wrap gap-2 mt-8">
+                    <div className="flex flex-wrap gap-2 mt-7">
                         <button
+                            type="button"
                             onClick={() => setSelectedDomain("all")}
-                            className={`px-3.5 py-1.5 rounded-full text-xs font-editorial-mono transition-all duration-200 ${
+                            className={`px-3.5 py-1.5 rounded-full text-xs font-editorial-mono transition-all duration-200 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#141413] ${
                                 selectedDomain === "all"
                                     ? "bg-[#141413] text-[#FAF7F3] shadow-xs"
-                                    : "bg-[#FAF7F3] border border-[#141413]/12 text-[#5C5955] hover:bg-[#F2EEE7]"
+                                    : "bg-[#FAF7F3] border border-[#141413]/12 text-[#5C5955] hover:border-[#141413]/30 hover:bg-[#F2EEE7] hover:-translate-y-0.5"
                             }`}
                         >
                             All Domains ({skillDomains.length})
@@ -186,11 +187,12 @@ const Skills = () => {
                         {skillDomains.map((d) => (
                             <button
                                 key={d.id}
+                                type="button"
                                 onClick={() => setSelectedDomain(d.id)}
-                                className={`px-3.5 py-1.5 rounded-full text-xs font-editorial-mono transition-all duration-200 ${
+                                className={`px-3.5 py-1.5 rounded-full text-xs font-editorial-mono transition-all duration-200 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#141413] ${
                                     selectedDomain === d.id
                                         ? "bg-[#141413] text-[#FAF7F3] shadow-xs"
-                                        : "bg-[#FAF7F3] border border-[#141413]/12 text-[#5C5955] hover:bg-[#F2EEE7]"
+                                        : "bg-[#FAF7F3] border border-[#141413]/12 text-[#5C5955] hover:border-[#141413]/30 hover:bg-[#F2EEE7] hover:-translate-y-0.5"
                                 }`}
                             >
                                 {d.badge}
@@ -202,7 +204,8 @@ const Skills = () => {
                 {/* SKILL DOMAINS GRID */}
                 <div
                     ref={gridRef}
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+                    key={selectedDomain}
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 transition-opacity duration-200"
                 >
                     {displayedDomains.map((domain) => (
                         <div
@@ -223,7 +226,7 @@ const Skills = () => {
                                     {domain.skills.map((skill, sIdx) => (
                                         <div
                                             key={sIdx}
-                                            className="group relative inline-flex flex-col px-3 py-1.5 rounded-xl bg-[#F2EEE7] border border-[#141413]/8 hover:border-[#141413]/25 hover:bg-[#EBE6DD] transition-all cursor-default"
+                                            className="group relative inline-flex flex-col px-3 py-1.5 rounded-xl bg-[#F2EEE7] border border-[#141413]/8 hover:border-[#141413]/30 hover:bg-[#FAF7F3] hover:-translate-y-0.5 hover:shadow-2xs transition-all duration-200 cursor-default"
                                         >
                                             <span className="text-xs font-editorial-sans font-semibold text-[#141413]">
                                                 {skill.name}

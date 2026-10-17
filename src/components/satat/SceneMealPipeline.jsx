@@ -62,21 +62,23 @@ const SceneMealPipeline = () => {
                 {/* Interactive Routing Selector */}
                 <div className="inline-flex items-center p-1 rounded-full bg-[#FAF7F3] border border-[#141413]/15 text-xs font-editorial-sans shadow-2xs">
                     <button
+                        type="button"
                         onClick={() => setActiveRoute("canonical")}
-                        className={`px-3.5 py-1.5 rounded-full transition-all duration-200 font-semibold ${
+                        className={`px-3.5 py-1.5 rounded-full transition-all duration-200 font-semibold cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#141413] ${
                             activeRoute === "canonical"
-                                ? "bg-[#3A6351] text-[#FAF7F3] shadow-xs"
-                                : "text-[#5C5955] hover:text-[#141413]"
+                                ? "bg-[#141413] text-[#FAF7F3] shadow-xs"
+                                : "text-[#5C5955] hover:text-[#141413] hover:bg-[#F2EEE7]"
                         }`}
                     >
                         Route A: Deterministic Food DB
                     </button>
                     <button
+                        type="button"
                         onClick={() => setActiveRoute("ai")}
-                        className={`px-3.5 py-1.5 rounded-full transition-all duration-200 font-semibold ${
+                        className={`px-3.5 py-1.5 rounded-full transition-all duration-200 font-semibold cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#141413] ${
                             activeRoute === "ai"
-                                ? "bg-[#D95338] text-[#FAF7F3] shadow-xs"
-                                : "text-[#5C5955] hover:text-[#141413]"
+                                ? "bg-[#141413] text-[#FAF7F3] shadow-xs"
+                                : "text-[#5C5955] hover:text-[#141413] hover:bg-[#F2EEE7]"
                         }`}
                     >
                         Route B: AI Estimation
@@ -98,9 +100,7 @@ const SceneMealPipeline = () => {
                                 onMouseLeave={() => setActiveStage(null)}
                                 className={`relative p-4 rounded-xl border transition-all duration-200 flex flex-col justify-between cursor-default ${
                                     isLast
-                                        ? activeRoute === "canonical"
-                                            ? "bg-[#3A6351]/10 border-[#3A6351]/30 text-[#141413]"
-                                            : "bg-[#D95338]/10 border-[#D95338]/30 text-[#141413]"
+                                        ? "bg-[#FAF7F3] border-[#141413]/30 text-[#141413] shadow-xs ring-1 ring-[#141413]/10"
                                         : isHovered
                                         ? "bg-[#EBE6DD] border-[#141413]/30 shadow-xs"
                                         : "bg-[#F2EEE7] border-[#141413]/10"
@@ -109,15 +109,7 @@ const SceneMealPipeline = () => {
                                 <div>
                                     <div className="flex items-center justify-between text-[10px] font-editorial-mono pb-1 border-b border-[#141413]/8">
                                         <span className="font-bold text-[#7A756F]">STAGE {st.num}</span>
-                                        <span
-                                            className={`font-semibold ${
-                                                isLast
-                                                    ? activeRoute === "canonical"
-                                                        ? "text-[#3A6351]"
-                                                        : "text-[#D95338]"
-                                                    : "text-[#141413]"
-                                            }`}
-                                        >
+                                        <span className="font-semibold text-[#141413]">
                                             {st.tech}
                                         </span>
                                     </div>

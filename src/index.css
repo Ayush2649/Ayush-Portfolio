@@ -101,6 +101,137 @@ body {
     border-color: rgba(20, 20, 19, 0.09);
 }
 
+/* ==========================================================================
+   Consistent Button & Interactive System (180-250ms transitions)
+   ========================================================================== */
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.25rem;
+    border-radius: 9999px;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.25rem;
+    background-color: #141413;
+    color: #FAF7F3;
+    border: 1px solid #141413;
+    text-decoration: none;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 220ms ease-out, color 220ms ease-out, border-color 220ms ease-out, transform 220ms ease-out, box-shadow 220ms ease-out;
+    box-shadow: 0 1px 2px rgba(20, 20, 19, 0.05);
+}
+
+.btn-primary:hover {
+    background-color: #D95338;
+    border-color: #D95338;
+    color: #FAF7F3;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(217, 83, 56, 0.28);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(217, 83, 56, 0.2);
+}
+
+.btn-primary:focus-visible {
+    outline: 2px solid #141413;
+    outline-offset: 2px;
+}
+
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.25rem;
+    border-radius: 9999px;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.25rem;
+    background-color: #FAF7F3;
+    color: #141413;
+    border: 1px solid rgba(20, 20, 19, 0.18);
+    text-decoration: none;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 220ms ease-out, color 220ms ease-out, border-color 220ms ease-out, transform 220ms ease-out, box-shadow 220ms ease-out;
+    box-shadow: 0 1px 2px rgba(20, 20, 19, 0.02);
+}
+
+.btn-secondary:hover {
+    background-color: #141413;
+    border-color: #141413;
+    color: #FAF7F3;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(20, 20, 19, 0.12);
+}
+
+.btn-secondary:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(20, 20, 19, 0.08);
+}
+
+.btn-secondary:focus-visible {
+    outline: 2px solid #141413;
+    outline-offset: 2px;
+}
+
+/* Nav Link Hover Underline Indicator */
+.nav-link {
+    position: relative;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: #5C5955;
+    padding-block: 0.25rem;
+    transition: color 200ms ease-out;
+    text-decoration: none;
+}
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 1.5px;
+    background-color: #141413;
+    transition: width 220ms ease-out;
+}
+
+.nav-link:hover {
+    color: #141413;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-link:focus-visible {
+    outline: 2px solid #141413;
+    outline-offset: 4px;
+    border-radius: 2px;
+}
+
+/* Interactive link arrow animation */
+.arrow-icon {
+    display: inline-block;
+    transition: transform 220ms ease-out;
+}
+
+.group:hover .arrow-icon,
+.btn-primary:hover .arrow-icon,
+.btn-secondary:hover .arrow-icon {
+    transform: translate(2px, -2px);
+}
+
+
 /* Monumental Background Typography:
    - Mobile (< 768px): Stacked into two lines, large, bold, centered, zero clipping.
    - Tablet (768px - 1199px): Stacked into two lines, dominant editorial composition.
@@ -118,8 +249,8 @@ body {
     letter-spacing: -0.04em;
     line-height: 0.82;
     color: rgba(20, 20, 19, 0.065);
-    /* Mobile font sizing: Substantially larger, occupies ~86% of mobile screen width without clipping */
-    font-size: clamp(2.85rem, 14.5vw, 6.2rem);
+    /* Mobile font sizing: Substantially larger, occupies ~82% of mobile screen width without clipping */
+    font-size: clamp(2.65rem, 13.5vw, 5.8rem);
     width: 100%;
     user-select: none;
     pointer-events: none;
@@ -149,7 +280,7 @@ body {
 
 /* ==========================================================================
    Hero Flanking Layout System:
-   - Mobile (< 768px): Centered portrait on top, 4 cards stacked underneath
+   - Mobile (< 768px): Centered portrait on top, 4 cards stacked underneath in single column
    - Tablet (768px - 1199px): Centered portrait on top, 4 cards in 2 columns underneath
    - Desktop (>= 1200px): Centered portrait flanked on the left and right by the technical cards
    ========================================================================== */
@@ -163,9 +294,9 @@ body {
 }
 
 .hero-flanked-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    align-items: flex-end;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     width: 100%;
     max-width: 1400px;
@@ -173,17 +304,6 @@ body {
     gap: 1.25rem;
     position: relative;
     z-index: 10;
-}
-
-.hero-flanked-left {
-    order: 2;
-    display: flex;
-    flex-direction: column;
-    gap: 0.875rem;
-    width: 100%;
-    max-width: 24rem;
-    margin-inline: auto;
-    z-index: 20;
 }
 
 .hero-flanked-portrait {
@@ -195,13 +315,24 @@ body {
     width: 100%;
 }
 
+.hero-flanked-left {
+    order: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+    max-width: 22rem;
+    margin-inline: auto;
+    z-index: 20;
+}
+
 .hero-flanked-right {
     order: 3;
     display: flex;
     flex-direction: column;
-    gap: 0.875rem;
+    gap: 0.75rem;
     width: 100%;
-    max-width: 24rem;
+    max-width: 22rem;
     margin-inline: auto;
     z-index: 20;
 }
@@ -209,6 +340,7 @@ body {
 /* Tablet (768px - 1199px): 2 columns below portrait */
 @media (min-width: 768px) and (max-width: 1199px) {
     .hero-flanked-grid {
+        display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
         max-width: 52rem;
         gap: 1.25rem;
@@ -222,17 +354,20 @@ body {
         grid-column: span 1 / span 1;
         order: 2;
         max-width: 100%;
+        margin-left: 0;
     }
     .hero-flanked-right {
         grid-column: span 1 / span 1;
         order: 3;
         max-width: 100%;
+        margin-right: 0;
     }
 }
 
 /* Desktop (>= 1200px): 3 columns flanking portrait */
 @media (min-width: 1200px) {
     .hero-flanked-grid {
+        display: grid;
         grid-template-columns: minmax(280px, 320px) auto minmax(280px, 320px);
         align-items: flex-end;
         justify-content: center;

@@ -24,6 +24,7 @@ export const navLinks = [
     { name: "About", link: "#about" },
     { name: "Work", link: "#work" },
     { name: "Experience", link: "#experience" },
+    { name: "Education", link: "#education" },
     { name: "Skills", link: "#skills" },
     { name: "Contact", link: "#contact" },
 ];
@@ -91,10 +92,9 @@ export const projectsData = {
             status: "Live in Production",
             description: "A personal operating system connecting productivity, fitness, nutrition, and context-aware AI.",
             bullets: [
-                "Built a Next.js and TypeScript application connecting tasks, workout tracking, nutrition, and AI assistance.",
-                "Developed a two-stage meal-analysis pipeline using Gemini vision, a deterministic food database, and DeepSeek estimation.",
-                "Built Orbit, an AI companion that uses task, workout, and nutrition context to provide relevant assistance.",
-                "Implemented a NextAuth-to-Firebase custom-token bridge and granular Firestore security rules."
+                "Full-stack Next.js and TypeScript personal OS connecting goal tracking, workouts, nutrition, and AI assistance.",
+                "Two-stage meal pipeline pairing Gemini 2.0 vision with deterministic food databases and DeepSeek fallback.",
+                "Orbit contextual AI engine with custom NextAuth-to-Firebase security bridge and user-isolated Firestore rules."
             ],
             stack: [
                 "Next.js 14",
@@ -124,12 +124,11 @@ export const projectsData = {
             company: "Contentstack",
             role: "Software Engineering Intern",
             status: "Internal Production",
-            description: "A centralized internal engineering platform engineered to streamline the creation, taxonomy, discovery, and automated reuse of production-grade architectural solutions across teams.",
+            description: "Centralized internal engineering platform streamlining taxonomy, discovery, and automated reuse of verified architectural solutions across developer pods.",
             bullets: [
-                "Eliminated repetitive boilerplate development by establishing a discoverable, version-controlled library of verified engineering solutions.",
-                "Designed structured solution schemas enabling cross-stack discovery and rapid technical onboarding across developer pods.",
-                "Delivered a verified 30%+ engineering productivity improvement across participating development groups.",
-                "Integrated automated taxonomy and intelligent retrieval to surface relevant architectural blueprints during sprint scoping."
+                "Eliminated repetitive boilerplate development through a discoverable, version-controlled library of verified engineering blueprints.",
+                "Designed structured solution schemas enabling cross-stack taxonomy and accelerated onboarding across engineering pods.",
+                "Delivered a verified 30%+ engineering productivity improvement across participating Contentstack development groups."
             ],
             stack: [
                 "React",
@@ -148,16 +147,15 @@ export const projectsData = {
             id: "arrhythmia",
             number: "03",
             title: "Explainable Arrhythmia Detection",
-            subtitle: "Clinical-Grade 1D CNN–LSTM with Grad-CAM Visual Explainability",
+            subtitle: "1D CNN–LSTM with Grad-CAM Visual Explainability",
             category: "Deep Learning Research · Healthcare AI",
             role: "Lead Researcher & Engineer",
             status: "Open Source Research",
-            description: "An interpretable deep learning diagnostic system designed to automate cardiac arrhythmia detection from raw time-series ECG telemetry with transparent clinical heatmaps.",
+            description: "Interpretable deep learning diagnostic system automating cardiac arrhythmia detection from raw time-series ECG telemetry with transparent Grad-CAM clinical heatmaps.",
             bullets: [
                 "Engineered a hybrid 1D CNN–LSTM architecture capturing both localized morphological anomalies and temporal cardiac sequence dependencies.",
                 "Trained and evaluated on the benchmark MIT-BIH Arrhythmia Database across standardized AAMI cardiac beat categories.",
-                "Integrated 1D Grad-CAM (Gradient-weighted Class Activation Mapping) to highlight exact P-Q-R-S-T wave segments driving predictions.",
-                "Evaluated comprehensively across precision, recall, F1-score, and accuracy, documenting morphological edge-case boundaries."
+                "Integrated 1D Grad-CAM to highlight exact P-Q-R-S-T wave segments driving predictions, evaluated across F1, precision, and recall."
             ],
             stack: [
                 "Python",
